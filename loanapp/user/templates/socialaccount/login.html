@@ -1,0 +1,199 @@
+{% load static %}
+{% load i18n %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="{% static 'images/favicon.ico' %}" rel="icon" />
+  <title>Strategy Loan - Google Sign In</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/all.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+ <style>
+  body.dark-mode h1 .text-white{
+  color: #000 !important;
+}
+  body.dark-mode .text-white{
+  color: #000 !important;
+}
+
+  .theme-toggle-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+  .theme-toggle-btn.sun {
+    color: #FFD700;
+  }
+  .theme-toggle-btn.moon {
+    color: #c0c0c0;
+  }
+  body.dark-mode {
+    background-color: #000;
+    color: #f5f5f5;
+  }
+  
+  body.dark-mode h2,
+  body.dark-mode h3,
+  body.dark-mode h4,
+  body.dark-mode h5,
+  body.dark-mode h6 {
+    color: #fa660f !important;
+  }
+  body.dark-mode .text-muted {
+    color: #bbb !important;
+  }
+  body.dark-mode .bg-white {
+    background-color: #1e1e1e !important;
+  }
+  body.dark-mode input,
+  body.dark-mode select,
+  body.dark-mode textarea {
+    background-color: #2c2c2c;
+    color: #f5f5f5;
+    border-color: #444;
+  }
+  body.dark-mode .form-control:focus {
+    border-color: #fa660f;
+    box-shadow: 0 0 0 0.2rem rgba(250, 102, 15, 0.25);
+  }
+  body.dark-mode .btn-primary {
+    background-color: #fa660f;
+    border-color: #fa660f;
+    color: #000;
+  }
+  body.dark-mode a.btn-link,
+  body.dark-mode a {
+    color: #fa660f;
+  }
+
+  body.dark-mode .logo-light {
+  display: none !important;
+}
+body.dark-mode .logo-dark {
+  display: inline-block !important;
+}
+@media (max-width: 767px) {
+    .hero-wrap.pt-40pc {
+      padding-top: 40px;
+    }
+  }
+
+</style>
+</head>
+
+<body>
+
+<!-- Theme Toggle Icon -->
+<button id="themeToggle" class="theme-toggle-btn sun">
+  <i class="bi" id="themeIcon"></i>
+</button>
+
+<div id="main-wrapper">
+  <div class="container-fluid px-0">
+    <div class="row g-0 min-vh-100">
+
+      <!-- Left Side -->
+      <div class="col-md-6">
+        <div class="hero-wrap pt-40pc d-flex align-items-center h-100">
+          <div class="hero-mask opacity-9 bg-primary"></div>
+          <div class="hero-bg hero-bg-scroll" style="background-image: url('{% static "images/bg/image-3.jpg" %}');"></div>
+          <div class="hero-content mx-auto w-100 h-100 d-flex flex-column">
+            <div class="row g-0 my-auto">
+              <div class="col-10 col-lg-9 mx-auto text-center">
+                <img src="{% static 'images/logo-white.png' %}" class="img-fluid mb-4 logo-light" style="max-width: 230px;" alt="Strategy Loan">
+                <img src="{% static 'images/logo.png' %}" class="img-fluid mb-4 logo-dark d-none" style="max-width: 230px;" alt="Strategy Loan">
+                <h1 class="text-white mb-3">Google Authentication</h1>
+                <p class="text-4 text-white lh-base">
+                  Securely connect or log in using your Google account.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side -->
+      <div class="col-md-6 d-flex align-items-center bg-white">
+        <div class="container my-5">
+          <div class="row g-0">
+            <div class="col-11 col-lg-9 col-xl-8 mx-auto">
+              <div class="mb-4 text-center">
+                {% if process == "connect" %}
+                  <h3 class="fw-bold">Connect with Google</h3>
+                  <p class="text-muted">You're about to connect your Google account to Strategy Loan.</p>
+                {% else %}
+                  <h3 class="fw-bold">Sign In with Google</h3>
+                  <p class="text-muted">You're about to sign in using your Google account.</p>
+                {% endif %}
+              </div>
+
+              <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary w-100">
+                  <i class="fas fa-arrow-right me-2"></i> Continue
+                </button>
+              </form>
+
+              <div class="mt-4 text-center">
+                <a href="{% url 'account_login' %}" class="btn-link">Back to Login</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- JS Scripts -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/theme.js' %}"></script>
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeIcon');
+  const savedTheme = localStorage.getItem('theme');
+
+  function setThemeIcon(mode) {
+    icon.className = '';
+    icon.classList.add('bi');
+    toggle.classList.remove('sun', 'moon');
+    if (mode === 'dark') {
+      icon.classList.add('bi-moon-fill');
+      toggle.classList.add('moon');
+    } else {
+      icon.classList.add('bi-sun-fill');
+      toggle.classList.add('sun');
+    }
+  }
+
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    setThemeIcon('dark');
+  } else {
+    setThemeIcon('light');
+  }
+
+  toggle.addEventListener('click', function () {
+    const isDark = document.body.classList.toggle('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    setThemeIcon(isDark ? 'dark' : 'light');
+  });
+</script>
+
+</body>
+</html>

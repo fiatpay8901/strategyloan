@@ -1,0 +1,35 @@
+{% load static %}
+<!-- Header Start -->
+<header class="main-header main-header-four">
+    <div class="container">
+        <nav class="main-menu">
+            <div class="main-menu-logo">
+                <a href="{% url 'home' %}">
+                    <img width="230px" src="{% static 'assets/images/logo.png' %}" alt="Strategy Loan logo">
+                </a>
+            </div>
+            <div class="main-menu-inner">
+                <ul class="main-menu-list">
+                    <li class="menu-item-children"><a href="{% url 'services' %}">SERVICES</a></li>
+                    <li class="menu-item-children"><a href="{% url 'terms' %}">TERMS</a></li>
+                    <li class="menu-item-children"><a href="{% url 'privacy' %}">PRIVACY</a></li>
+                    <li class="menu-item-children"><a href="{% url 'faq' %}">FAQ</a></li>
+                </ul>
+                <div class="header-right-end">
+                    <span class="line-1"></span>
+                    <span class="line-2"></span>
+                    <span class="line-3"></span>
+                </div>
+            </div>
+            <div class="main-menu-right d-flex align-items-center gap-2">
+                <!-- Icon Buttons -->
+                <a href="{% url 'user:login' %}" class="btn btn-icon" title="Login">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="{% url 'user:register' %}" class="btn btn-icon" title="Register">
+                    <i class="fas fa-user-plus"></i>
+                </a>
+            </div>
+        </nav>
+    </div>
+</header>

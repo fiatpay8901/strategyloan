@@ -1,0 +1,106 @@
+{% extends "user/base.html" %}
+{% load static %}
+{% block title %}KYC Step 3{% endblock %}
+{% block content %}
+
+<div class="container py-5">
+  <h2 class="mb-4 text-primary fw-bold text-center">KYC Verification</h2>
+
+  <!-- Step Indicators -->
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap gap-3 mb-4 text-center">
+    <div class="flex-fill step-box">
+      <i class="fas fa-home fa-2x text-muted mb-2"></i>
+      <h6>Step 1</h6>
+      <p class="mb-0">Address Verification</p>
+    </div>
+    <div class="flex-fill step-box">
+      <i class="fas fa-id-card fa-2x text-muted mb-2"></i>
+      <h6>Step 2</h6>
+      <p class="mb-0">Identity Verification</p>
+    </div>
+    <div class="flex-fill step-box active">
+      <i class="fas fa-check-circle fa-2x text-primary mb-2"></i>
+      <h6>Step 3</h6>
+      <p class="mb-0">Review & Submit</p>
+    </div>
+  </div>
+
+  <div class="bg-white shadow-sm rounded p-4 mb-4">
+    <h5 class="mb-3">Step 3: Review Your Information</h5>
+
+    {% if kyc.status == "submitted" %}
+      <div class="alert alert-success text-center">
+        Your KYC has already been submitted and is under review.
+      </div>
+    {% endif %}
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <strong>Full Name:</strong><br> {{ kyc.full_name }}
+      </div>
+      <div class="col-md-6 mb-3">
+        <strong>Street Address:</strong><br> {{ kyc.street_address }}
+      </div>
+      <div class="col-md-6 mb-3">
+        <strong>City:</strong><br> {{ kyc.city }}
+      </div>
+      <div class="col-md-6 mb-3">
+        <strong>State:</strong><br> {{ kyc.state }}
+      </div>
+      <div class="col-md-6 mb-3">
+        <strong>Postal Code:</strong><br> {{ kyc.postal_code }}
+      </div>
+      <div class="col-md-6 mb-3">
+        <strong>Country:</strong><br> {{ kyc.country.name }}
+      </div>
+      <div class="col-md-6 mb-3">
+        <strong>Address Document Type:</strong><br> {{ kyc.address_doc_type }}
+      </div>
+      <div class="col-md-6 mb-3">
+        <strong>Address Proof:</strong><br>
+        {% if kyc.address_proof %}
+          <a href="{{ kyc.address_proof.url }}" target="_blank">View Document</a>
+        {% else %}
+          <span class="text-danger">Not uploaded</span>
+        {% endif %}
+      </div>
+
+      <hr class="my-4">
+
+      <div class="col-md-6 mb-3">
+        <strong>ID Type:</strong><br> {{ kyc.id_type }}
+      </div>
+      <div class="col-md-6 mb-3">
+        <strong>ID Number:</strong><br> {{ kyc.id_number }}
+      </div>
+      <div class="col-md-6 mb-3">
+        <strong>ID Document:</strong><br>
+        {% if kyc.id_document %}
+          <a href="{{ kyc.id_document.url }}" target="_blank">View Document</a>
+        {% else %}
+          <span class="text-danger">Not uploaded</span>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if kyc.status != "submitted" %}
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="confirmSubmit" name="confirmSubmit" required>
+          <label class="form-check-label" for="confirmSubmit">
+            I confirm that the above information is accurate and the documents are valid.
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit KYC for Review</button>
+      </form>
+    {% endif %}
+  </div>
+
+  <div class="text-center">
+    <p class="text-muted text-sm">
+      Need to update your documents? <a href="{% url 'user:kyc_step_2' %}" class="text-primary">Go back</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

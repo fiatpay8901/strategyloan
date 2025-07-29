@@ -1,0 +1,35 @@
+<!-- filepath: loanapp/user/templates/user/deposit_history.html -->
+{% extends "user/base.html" %}
+{% block content %}
+<h2>Deposit History</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Method</th>
+      <th>Status</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for deposit in deposits %}
+      <tr>
+        <td>{{ deposit.amount }}</td>
+        <td>{{ deposit.method.name }}</td>
+        <td>
+          {% if deposit.status == 'approved' %}
+            <span class="badge bg-success">Approved</span>
+          {% elif deposit.status == 'pending' %}
+            <span class="badge bg-warning text-dark">Pending</span>
+          {% else %}
+            <span class="badge bg-danger">Rejected</span>
+          {% endif %}
+        </td>
+        <td>{{ deposit.submitted_at|date:"Y-m-d H:i" }}</td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="4">No deposits yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

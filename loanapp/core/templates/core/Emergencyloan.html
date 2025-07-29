@@ -1,0 +1,135 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="services-details-section">
+    <div class="container">
+        <div class="row gutter-y-30">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <div class="services-block">
+                    <div class="services-details-image">
+                        <h1> Emergency Crypto Loan</h1>
+                    </div>
+                </div>
+
+                <div class="services-block dark-text-white">
+                    <p>When life takes an unexpected turn, StrategyiLoan is here to help with fast, reliable <strong>Emergency Loans</strong>. Whether it’s medical bills, urgent travel, sudden repairs, or any unforeseen expense — our emergency loan service provides instant liquidity using your crypto assets as collateral.</p>
+                </div>
+
+                <div class="services-block">
+                    <div class="services-details-image d-flex">
+                        <div>
+                            <img src="{% static 'assets/images/services/services-emergency-2.jpg' %}" alt="emergency help">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="services-block dark-text-white">
+                    <p>With 24/7 loan approvals, minimal requirements, and rapid disbursement, StrategyiLoan ensures you get the funds you need — when you need them most. Don’t sell your crypto in a panic. Use it to unlock fast, low-interest loans while keeping your portfolio intact.</p>
+                </div>
+
+                <div class="services-block">
+                    <ul class="features-one-list">
+                        <li>Get emergency funds in less than 30 minutes</li>
+                        <li>No paperwork or credit history required</li>
+                        <li>Secure with BTC, ETH, or USDT</li>
+                        <li>Access up to $250,000 instantly</li>
+                        <li>24/7 online approval system</li>
+                        <li>Flexible repayment from 1 to 12 months</li>
+                        <li>No penalties for early repayment</li>
+                        <li>Automated reminders and LTV protection</li>
+                        <li>Ideal for medical, travel, and urgent needs</li>
+                        <li>Trusted by thousands for fast financial help</li>
+                    </ul>
+                </div>
+
+                <!-- FAQ -->
+                <div class="services-block mb-0">
+                    <div class="accordion" id="accordionfaq">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
+                                    1. How fast can I get an emergency loan?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionfaq">
+                                <div class="accordion-body">
+                                    <p>Once your crypto collateral is verified, emergency loans are typically disbursed within 30 minutes, day or night.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    2. What assets are accepted as collateral?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionfaq">
+                                <div class="accordion-body">
+                                    <p>You can use BTC, ETH, and USDT as collateral. More assets may be supported soon depending on demand and risk profiles.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    3. Do I need a job or bank account to qualify?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionfaq">
+                                <div class="accordion-body">
+                                    <p>No. We don’t require income proof or a bank account. Your crypto serves as full collateral for the loan.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                    4. Can I use the loan for any type of emergency?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionfaq">
+                                <div class="accordion-body">
+                                    <p>Yes. Funds can be used for medical, housing, travel, repairs, legal costs, or any urgent need. There are no usage restrictions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="services-sidebar">
+                    <div class="services-block">
+                        <div class="category-widget">
+                            <h4>Service Category</h4>
+                            <ul>
+                                <li><a href="{% url 'personal_loan' %}">Personal Crypto Loan <i class="flaticon-right-arrow"></i></a></li>
+                                <li><a href="{% url 'business_loan' %}">Business Loan <i class="flaticon-right-arrow"></i></a></li>
+                                <li><a href="{% url 'investment_loan' %}">Crypto Investment Loan <i class="flaticon-right-arrow"></i></a></li>
+                                <li class="active"><a href="#">Emergency Loan <i class="flaticon-right-arrow"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="services-block mb-0">
+                        <div class="bolg-cta-widget">
+                            <div class="bolg-cta-widget-inner">
+                                <img src="{% static 'assets/images/logo-orange.png' %}" alt="logo">
+                                <h3>Emergency Support Center</h3>
+                                
+                                <a href="{% url 'contact' %}" class="btn btn-primary">Get Started <i class="flaticon-next"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "user/base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Complete Your Deposit - Strategy Loan{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center">Complete Your Deposit</h2>
+  <div class="col-md-8 mx-auto bg-white shadow-sm rounded p-4 px-sm-5">
+
+    {% if transaction.method.category == 'bank' %}
+      <h5>Bank Transfer Instructions</h5>
+      <p>Please transfer <strong>${{ transaction.amount|intcomma|default_if_none:'0.00' }}</strong> to the account below:</p>
+      <div class="bg-light p-3 rounded">
+        <strong>{{ transaction.bank_option.account_name }}</strong><br>
+        Bank: {{ transaction.bank_option.bank_name }}<br>
+        Account Number: {{ transaction.bank_option.account_number }}<br>
+        Reference: <strong>{{ transaction.reference }}</strong>
+      </div>
+    {% elif transaction.method.category == 'crypto' %}
+      <h5>Crypto Deposit</h5>
+      <p>Send <strong>${{ transaction.amount|intcomma|default_if_none:'0.00' }}</strong> worth of <strong>{{ transaction.crypto_option.coin }}</strong> to the address below:</p>
+      <div class="bg-light p-3 rounded">
+        <span style="display: flex; align-items: center;">
+          <code id="wallet-address">{{ transaction.crypto_option.address }}</code>
+          <button type="button" id="copy-btn" class="btn btn-outline-secondary btn-sm ms-2" title="Copy address">
+            <i class="bi bi-clipboard"></i>
+          </button>
+        </span>
+        {% if transaction.crypto_option.qr_code %}
+          <img src="{{ transaction.crypto_option.qr_code.url }}" alt="{{ transaction.crypto_option.coin }} QR Code" class="qr-code mt-2" style="max-width: 150px;" />
+        {% endif %}
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const copyBtn = document.getElementById('copy-btn');
+          const walletAddress = document.getElementById('wallet-address');
+          if (copyBtn && walletAddress) {
+            copyBtn.addEventListener('click', function() {
+              navigator.clipboard.writeText(walletAddress.textContent.trim());
+              copyBtn.innerHTML = 'Copied!';
+              setTimeout(() => {
+                copyBtn.innerHTML = '<i class="bi bi-clipboard"></i>';
+              }, 1200);
+            });
+          }
+        });
+      </script>
+    {% elif transaction.method.category == 'gateway' %}
+      <h5>{{ transaction.method.name }} Payment</h5>
+      <p>Please send <strong>${{ transaction.amount|intcomma|default_if_none:'0.00' }}</strong> to the {{ transaction.method.name }} account below:</p>
+      <div class="bg-light p-3 rounded">
+        Payment Details: <strong>{{ transaction.method.gateway_details|default:'-' }}</strong><br>
+        Reference: <strong>{{ transaction.reference }}</strong>
+      </div>
+      <p class="mt-2">After payment, upload your proof of payment below.</p>
+    {% else %}
+      <p class="text-danger">No payment instructions available for this method.</p>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" class="mt-4">
+      {% csrf_token %}
+      {% if form.non_field_errors %}
+        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+      {% endif %}
+      <div class="mb-3">
+        <label class="form-label">Upload Proof of Payment</label>
+        {{ form.proof }}
+        {% if form.proof.errors %}
+          <div class="text-danger small">{{ form.proof.errors }}</div>
+        {% endif %}
+      </div>
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-primary">Submit Payment</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

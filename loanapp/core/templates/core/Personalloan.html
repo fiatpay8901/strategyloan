@@ -1,0 +1,137 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="services-details-section">
+    <div class="container">
+        <div class="row gutter-y-30">
+            <!-- Left Main Content -->
+            <div class="col-lg-8">
+                <div class="services-block">
+                    <div class="services-details-image">
+                   <h1> Personal Crypto Loan</h1>
+                        <p class="lead dark-text-white">Unlock the power of your crypto assets with our Personal Crypto Loan service. Get instant cash without selling your digital assets.</p>
+                    </div>
+                </div>
+
+                <div class="services-block dark-text-white">
+                    <p>With StrategyiLoan’s <strong>Personal Crypto Loans</strong>, you can unlock instant cash without selling your digital assets. Use your crypto as collateral to access secure, flexible, and fast loans — while maintaining ownership of your holdings. Our platform is designed to be user-friendly, transparent, and accessible to all, whether you're borrowing for personal needs, investments, or short-term liquidity.</p>
+                </div>
+
+                <div class="services-block">
+                    <div class="services-details-image d-flex">
+                        <div>
+                            <img src="{% static 'assets/images/services/services-details-2.jpg' %}" alt="loan benefits">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="services-block dark-text-white">
+                    <p>At StrategyiLoan, we empower individuals by offering decentralized loan options that require no credit checks and ensure privacy. Whether you're covering an urgent expense or planning a big move, our Personal Crypto Loan offers the liquidity you need, backed by your crypto—without selling it. It’s simple, secure, and fast.</p>
+                </div>
+
+                <div class="services-block">
+                    <ul class="features-one-list">
+                        <li>Borrow without selling your crypto</li>
+                        <li>Fast approval and instant fund disbursement</li>
+                        <li>Flexible repayment options (3–12 months)</li>
+                        <li>Secure wallet-backed collateral system</li>
+                        <li>No credit score or income proof needed</li>
+                        <li>Support for BTC, ETH, and USDT collateral</li>
+                        <li>Transparent interest rates (from 7%)</li>
+                        <li>24/7 Support from crypto loan experts</li>
+                        <li>Mobile-friendly loan dashboard</li>
+                        <li>Regulated and secure crypto lending platform</li>
+                    </ul>
+                </div>
+
+                <!-- FAQ Accordion -->
+                <div class="services-block mb-0">
+                    <div class="accordion" id="accordionfaq">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
+                                    1. What documents are required to apply for a crypto loan?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionfaq">
+                                <div class="accordion-body">
+                                    <p>You’ll need to complete our KYC verification by submitting a valid government-issued ID and a crypto wallet address. No income or credit report is required.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    2. What crypto assets can I use as collateral?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionfaq">
+                                <div class="accordion-body">
+                                    <p>We currently accept BTC, ETH, and USDT. You must have a verifiable wallet and meet the minimum collateral requirement (starting from $500 equivalent).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    3. Can I repay the loan before the due date?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionfaq">
+                                <div class="accordion-body">
+                                    <p>Yes, early repayment is allowed without penalties. Once fully repaid, your crypto collateral will be released to your wallet immediately.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                    4. What happens if the value of my collateral drops?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionfaq">
+                                <div class="accordion-body">
+                                    <p>If the value of your collateral drops significantly below the required LTV threshold, you may be asked to top-up your collateral to avoid liquidation. Our platform will notify you in advance if this occurs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="col-lg-4">
+                <div class="services-sidebar">
+                    <!-- Loan Categories -->
+                    <div class="services-block">
+                        <div class="category-widget">
+                            <h4>Service Category</h4>
+                            <ul>
+                                <li class="active"><a href="{% url 'personal_loan' %}">Personal Crypto Loan <i class="flaticon-right-arrow"></i></a></li>
+                                <li><a href="{% url 'business_loan' %}">Business Loan <i class="flaticon-right-arrow"></i></a></li>
+                                <li><a href="{% url 'investment_loan' %}">Crypto Investment Loan <i class="flaticon-right-arrow"></i></a></li>
+                                <li><a href="{% url 'emergency_loan' %}">Emergency Loan <i class="flaticon-right-arrow"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Widget -->
+                    <div class="services-block mb-0">
+                        <div class="bolg-cta-widget">
+                            <div class="bolg-cta-widget-inner">
+                                <img src="{% static 'assets/images/logo-orange.png' %}" alt="logo">
+                                <h3>Need Help Applying?</h3>
+                                <a href="{% url 'contact' %}" class="btn btn-primary">Contact Support <i class="flaticon-next"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

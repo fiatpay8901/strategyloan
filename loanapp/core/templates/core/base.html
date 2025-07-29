@@ -1,0 +1,299 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Strategy Loan{% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Wix+Madefor+Display:wght@400..800&display=swap" rel="stylesheet">
+    <link href="{% static 'css/fonts.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/vendors/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/slick/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/animation/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/font-awesome/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/icon/font/flaticon_loan.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/nouislider/css/nouislider.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'assets/vendors/nouislider/css/nouislider.pips.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/youtube-popup/youtube-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    {% block extra_head %}{% endblock %}
+    <style>
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #FFD700;
+        }
+        .theme-toggle-btn.moon {
+            color: #c0c0c0;
+        }
+        
+        
+body.dark-mode .always-black,
+body.dark-mode .always-black *,
+body.dark-mode .always-black .heading-title,
+body.dark-mode .always-black .heading-subtitle {
+    color: #000000 !important;
+}
+
+
+  
+        body.dark-mode .dark-text-white {
+            color: #ffffff !important;
+        }
+
+body.dark-mode .dark-text-white p,
+body.dark-mode .dark-text-white strong {
+    color: #ffffff !important;
+}
+
+
+
+
+        body.dark-mode {
+            background-color: #000;
+            color: #f5f5f5;
+        }
+        body.dark-mode a:not(header a),
+        body.dark-mode .menu-item-children > a:not(header a) {
+            {% comment %} color: #f5f5f5; {% endcomment %}
+        }
+        body.dark-mode .btn,
+        body.dark-mode .mobile-nav-content {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+        }
+        
+        body.dark-mode .preloader .loading-text span {
+            color: #fa660f;
+        }
+        body.dark-mode .logo-light {
+            display: none !important;
+        }
+        body.dark-mode .logo-dark {
+            display: inline-block !important;
+        }
+
+
+  .fixed-size-logo {
+    width: 100px;
+    max-width: 30px;
+    height: auto;
+    max-height: 30px;
+    object-fit: contain;
+    display: inline-block;
+  }
+  @media (min-width: 768px) {
+    .fixed-size-logo {
+      width: 120px;
+      max-width: 100%;
+      max-height: 50px;
+    }
+  }
+ 
+
+   .approved-by-section .carousel-inner {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+  .approved-by-logos img.grayscale {
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: 0.3s ease-in-out;
+  }
+  .approved-by-logos img.grayscale:hover,
+  .carousel-inner img.grayscale:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+  .fixed-size-logo {
+    width: 100px;
+    max-width: 30px;
+    height: auto;
+    max-height: 30px;
+    object-fit: contain;
+    display: inline-block;
+  }
+  @media (min-width: 768px) {
+    .fixed-size-logo {
+      width: 120px;
+      max-width: 100%;
+      max-height: 50px;
+    }
+    .approved-by-section .carousel-inner {
+      max-width: 100%;
+    }
+  }
+
+
+  .loan-types-section .card {
+    border: none;
+    background-color: #f9f9f9;
+  }
+  .dark-bg .loan-types-section .card {
+    background-color: #013b63;
+    color: #fff;
+  }
+  .loan-types-section .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  .loan-types-section .card ul li {
+    padding: 0.25rem 0;
+  }
+
+    </style>
+</head>
+<body class="custom-cursor">
+
+<div class="custom-cursor-one">
+    <div class="custom-cursor-inner"></div>
+</div>
+<div class="preloader">
+    <div class="loading-container">
+        <div class="loading-text">
+            <span>S</span><span>T</span><span>R</span><span>A</span><span>T</span><span>E</span><span>G</span><span>Y</span><span>L</span><span>O</span><span>A</span><span>N</span>
+        </div>
+    </div>
+</div>
+
+<header class="main-header main-header-four fixed-header">
+    <div class="container">
+        <nav class="main-menu">
+            <div class="main-menu-logo">
+                <a href="{% url 'home' %}">
+                    <img width="230px" src="{% static 'assets/images/logo.png' %}" alt="Strategy Loan logo" class="logo-light">
+                    <img width="230px" src="{% static 'assets/images/logo-white.png' %}" alt="Strategy Loan logo" class="logo-dark d-none">
+                </a>
+            </div>
+            <div class="main-menu-inner">
+                <ul class="main-menu-list">
+                    <li class="menu-item-children{% if request.path == '/home/' %} active{% endif %}">
+                        <a href="{% url 'home' %}">HOME</a>
+                    </li>
+                    <li class="menu-item-children{% if request.path == '/services/' %} active{% endif %}">
+                        <a href="#">SERVICES</a><i class="fa-solid fa-chevron-down"></i>
+                            <ul>
+                                <li><a href="{% url 'personal_loan' %}">Personal Loan </a></li>
+                                <li><a href="{% url 'business_loan' %}">Business Loan</a></li>
+                                <li><a href="{% url 'investment_loan' %}">Crypto Investment Loan</a></li>
+                                <li><a href="{% url 'emergency_loan' %}">Emergency Loan</a></li>
+                            </ul>
+                    </li>
+                    <li class="menu-item-children{% if request.path == '/terms/' %} active{% endif %}">
+                        <a href="{% url 'terms' %}">TERMS</a>
+                    </li>
+                    <li class="menu-item-children{% if request.path == '/privacy/' %} active{% endif %}">
+                        <a href="{% url 'privacy' %}">PRIVACY</a>
+                    </li>
+                    <li class="menu-item-children{% if request.path == '/faq/' %} active{% endif %}">
+                        <a href="{% url 'faq' %}">FAQ</a>
+                    </li>
+                </ul>
+                <div class="header-right-end">
+                    <span class="line-1"></span>
+                    <span class="line-2"></span>
+                    <span class="line-3"></span>
+                </div>
+            </div>
+            <div class="main-menu-right d-flex align-items-center gap-2">
+                <button id="themeToggle" class="theme-toggle-btn sun d-flex align-items-center" title="Toggle Theme">
+                    <i class="bi" id="themeIcon"></i>
+                </button>
+                <a href="{% url 'user:login' %}" class="btn btn-icon" title="Login">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+{% block content %}{% endblock %}
+{% include "core/partials/footer.html" %}
+
+<div class="mobile-nav-wrapper">
+    <div class="mobile-nav-overlay mobile-nav-toggler"></div>
+    <div class="mobile-nav-content">
+        <a href="#" class="mobile-nav-close mobile-nav-toggler">
+            <span></span>
+            <span></span>
+        </a>
+        <div class="logo-box">
+            <a href="{% url 'home' %}">
+                <img width="230px" src="{% static 'assets/images/logo-white.png' %}" alt="logo">
+            </a>
+        </div>
+        <div class="mobile-nav-container">
+            <ul class="mobile-menu-list">
+                <li class="menu-item-has-children">
+                    <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="{% url 'services' %}">Services</a>
+                            <ul>
+                                <li><a href="{% url 'personal_loan' %}">Personal Loan </a></li>
+                                <li><a href="{% url 'business_loan' %}">Business Loan</a></li>
+                                <li><a href="{% url 'investment_loan' %}">Crypto Investment Loan</a></li>
+                                <li><a href="{% url 'emergency_loan' %}">Emergency Loan</a></li>
+                            </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="{% url 'terms' %}">Terms</a>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="{% url 'privacy' %}">Privacy</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<a href="#" data-target="html" class="scroll-to-target scroll-to-top"></a>
+<script src="{% static 'assets/vendors/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/vendors/jquery/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'assets/vendors/slick/slick.min.js' %}"></script>
+<script src="{% static 'assets/vendors/wow/wow.js' %}"></script>
+<script src="{% static 'assets/vendors/nouislider/js/nouislider.min.js' %}"></script>
+<script src="{% static 'assets/vendors/nouislider/js/wNumb.min.js' %}"></script>
+<script src="{% static 'assets/vendors/youtube-popup/youtube-popup.jquery.js' %}"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>
+<script>
+    const toggle = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+    const savedTheme = localStorage.getItem('theme');
+
+    function setThemeIcon(mode) {
+        icon.className = '';
+        icon.classList.add('bi');
+        toggle.classList.remove('sun', 'moon');
+        if (mode === 'dark') {
+            icon.classList.add('bi-moon-fill');
+            toggle.classList.add('moon');
+        } else {
+            icon.classList.add('bi-sun-fill');
+            toggle.classList.add('sun');
+        }
+    }
+
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        setThemeIcon('dark');
+    } else {
+        setThemeIcon('light');
+    }
+
+    toggle.addEventListener('click', function () {
+        const isDark = document.body.classList.toggle('dark-mode');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        setThemeIcon(isDark ? 'dark' : 'light');
+    });
+</script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

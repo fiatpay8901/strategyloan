@@ -1,0 +1,14 @@
+{% extends "user/base.html" %}
+{% load static %}
+
+{% block title %}Deposit Submitted - Strategy Loan{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="col-md-8 mx-auto bg-white shadow-sm rounded p-4 px-sm-5 text-center">
+    <h2 class="mb-4 text-success">Deposit Submitted!</h2>
+    <p>Your deposit proof has been submitted successfully. Our team will review your payment and update your balance soon.</p>
+    <a href="{% url 'user:dashboard' %}" class="btn btn-primary mt-3">Go to Dashboard</a>
+  </div>
+</div>
+{% endblock %}

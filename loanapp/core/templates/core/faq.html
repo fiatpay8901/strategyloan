@@ -1,0 +1,165 @@
+{% extends "core/base.html" %}
+{% load static %} 
+    {% block title %}FAQ{% endblock %}
+
+    {% block content %}
+    <section class="faq-section py-5">
+        <div class="container">
+            <div class="row gutter-y-30 gutter-x-15">
+                <div class="col-lg-8">
+                    <div class="accordion" id="accordionfaq">
+
+                        <!-- KYC & Application -->
+                        <div class="fqa-block">
+                            <h4>Application & KYC</h4>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq1">
+                                        1. What documents are required to apply for a crypto loan?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#accordionfaq">
+                                    <div class="accordion-body">
+                                        <p>To apply, you’ll need a valid government-issued ID, proof of address, and basic
+                                            financial details. Additional verification may apply depending on your loan
+                                            type.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq2">
+                                        2. Is KYC mandatory for crypto loans?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionfaq">
+                                    <div class="accordion-body">
+                                        <p>Yes. StrategyiLoan is fully compliant with global AML/KYC standards. All users must
+                                            verify their identity before submitting loan applications.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Loan Details -->
+                        <div class="fqa-block">
+                            <h4>Loan Terms & Repayment</h4>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq3">
+                                        1. What is the minimum and maximum loan amount?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordionfaq">
+                                    <div class="accordion-body">
+                                        <p>StrategyiLoan offers loans from $5,000 up to €500 million, depending on collateral,
+                                            location, and loan category.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq4">
+                                        2. How is the interest rate determined?
+                                    </button>
+                                </h2>
+                                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordionfaq">
+                                    <div class="accordion-body">
+                                        <p>Rates depend on loan size, risk class, and repayment period. Rates start from 4.5%
+                                            APR for stablecoin-backed loans.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq5">
+                                        3. Can I repay early without penalties?
+                                    </button>
+                                </h2>
+                                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#accordionfaq">
+                                    <div class="accordion-body">
+                                        <p>Yes, early repayment is encouraged and comes with no hidden fees or penalties.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Crypto-Specific -->
+                        <div class="fqa-block">
+                            <h4>Crypto Collateral</h4>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq6">
+                                        1. What cryptocurrencies can I use as collateral?
+                                    </button>
+                                </h2>
+                                <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#accordionfaq">
+                                    <div class="accordion-body">
+                                        <p>We accept BTC, ETH, USDT, USDC, and other top-tier assets. Loan-to-value (LTV)
+                                            varies by asset type.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq7">
+                                        2. What happens if the value of my crypto drops?
+                                    </button>
+                                </h2>
+                                <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#accordionfaq">
+                                    <div class="accordion-body">
+                                        <p>If collateral value drops below the minimum LTV threshold, we may issue a margin
+                                            call. You’ll have 48 hours to top up or risk partial liquidation.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Technical & Access -->
+                        <div class="fqa-block">
+                            <h4>General & Technical</h4>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq8">
+                                        1. Can I access my dashboard from mobile?
+                                    </button>
+                                </h2>
+                                <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#accordionfaq">
+                                    <div class="accordion-body">
+                                        <p>Yes, StrategyiLoan is fully responsive and works on all devices. A dedicated mobile app
+                                            is in development.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq9">
+                                        2. How secure is StrategyiLoan?
+                                    </button>
+                                </h2>
+                                <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#accordionfaq">
+                                    <div class="accordion-body">
+                                        <p>We use end-to-end encryption, two-factor authentication, and crypto-grade security
+                                            infrastructure to protect your data and funds.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+
+    

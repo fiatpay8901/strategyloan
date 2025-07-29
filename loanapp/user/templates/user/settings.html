@@ -1,0 +1,115 @@
+{% extends "user/base.html" %}
+{% load static %}
+{% load user_extras %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+
+
+ {% if request.user.userprofile.pending_email %}
+        <div class="alert alert-warning">
+          Please verify your new email: <strong>{{ request.user.userprofile.pending_email }}</strong>
+          <br>A verification link has been sent.
+        </div>
+{% endif %}
+
+
+
+<div class="container py-5" style="padding-top: none;">
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <div class="bg-white shadow-sm rounded p-4 mb-4">
+        <h4 class="mb-4 text-primary">Account Settings</h4>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+        </form>
+      </div>
+
+      <div class="bg-white shadow-sm rounded p-4 mb-4">
+        <h5 class="mb-0 text-primary">Password</h5>
+        <hr>
+        <p>Create or update your password.</p>
+        <a href="{% url 'user:password_change' %}" class="btn btn-outline-primary btn-sm">Change Password</a>
+      </div>
+
+      <div class="bg-white shadow-sm rounded p-4 mb-4">
+        <h5 class="mb-0 text-primary">Email Address</h5>
+        <hr>
+        <p class="mb-0">{{ request.user.email }}</p>
+        {% if request.user.userprofile.alternate_email %}
+          <p class="mb-0"><strong>Alternate Email:</strong> {{ request.user.userprofile.alternate_email }}</p>
+        {% endif %}
+        <small class="text-muted">Used to log in and receive notifications.</small>
+
+        <!-- Change Email Form -->
+        <form method="post" action="{% url 'user:profile_settings' %}" class="mt-3">
+          {% csrf_token %}
+          <div class="mb-2">
+            <label for="new_email" class="form-label">Change Email Address</label>
+            <input type="email" name="new_email" id="new_email" class="form-control" placeholder="Enter new email" required>
+          </div>
+          <button type="submit" name="change_email" class="btn btn-outline-primary btn-sm">Update Email</button>
+        </form>
+      </div>
+
+     
+      {% if request.user.is_authenticated %}
+        <div class="bg-white shadow-sm rounded p-4 mb-4">
+          <h5 class="mb-0 text-primary">2-Step Verification</h5>
+          <hr>
+          {% if request.user|has_2fa %}
+            <div class="alert alert-success mb-2">
+              <i class="fas fa-shield-alt me-2"></i>
+              Two-Factor Authentication is <strong>enabled</strong>.
+            </div>
+            <form method="post" action="{% url 'two_factor:disable' %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-outline-danger btn-sm">
+                <i class="fas fa-trash-alt"></i> Remove 2FA
+              </button>
+            </form>
+          {% else %}
+            <p>Add an extra layer of security to your account.</p>
+            <a href="{% url 'two_factor:setup' %}" class="btn btn-outline-primary btn-sm">
+              <i class="fas fa-shield-alt"></i> Setup 2FA
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="bg-white shadow-sm rounded p-4 mb-4">
+        <h5 class="text-primary mb-3">Login Activity</h5>
+        <hr>
+        <ul class="list-unstyled mb-0">
+          {% for activity in login_activities %}
+            <li class="mb-2">
+              <i class="fas fa-laptop text-secondary me-2"></i>
+              {{ activity.user_agent|truncatechars:30 }} - {{ activity.ip_address }}
+              <small class="text-muted">({{ activity.timestamp|date:"M d, Y H:i" }})</small>
+            </li>
+          {% empty %}
+            <li>No recent login activity.</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Profile Picture Section -->
+      <div class="bg-white shadow-sm rounded text-center p-4 mb-4">
+        <form method="post" enctype="multipart/form-data" action="{% url 'user:profile_settings' %}">
+          {% csrf_token %}
+          <img class="rounded-circle mb-3"
+               src="{% if request.user.userprofile.profile_picture %}{{ request.user.userprofile.profile_picture.url }}{% else %}{% static 'images/profile-thumb.jpg' %}{% endif %}"
+               width="100" height="100" alt="Profile Picture">
+          <div class="mb-3">
+            <input type="file" name="profile_picture" accept="image/*" class="form-control">
+          </div>
+          <button type="submit" name="update_picture" class="btn btn-sm btn-outline-primary">Change Picture</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,497 @@
+{% extends "user/base.html" %}
+{% load static %}
+
+{% block content %}
+<div id="main-wrapper">
+  <div id="content" class="py-4">
+    <div class="container">
+      <div class="bg-white shadow-sm rounded p-4 mb-4">
+        <h2 class="text-primary mb-4">Apply for a Crypto Loan</h2>
+
+        <!-- Loan Types Tabs Section -->
+        <div class="mb-5">
+          <ul class="nav nav-tabs loan-tabs-scroll flex-row w-100" id="loanTypeTabs" role="tablist" style="overflow-x:auto; white-space:nowrap;">
+            <li class="nav-item flex-fill text-center" role="presentation" style="min-width: 140px;">
+              <button class="nav-link active" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button" role="tab" aria-controls="personal" aria-selected="true">
+                Personal Loan
+              </button>
+            </li>
+            <li class="nav-item flex-fill text-center" role="presentation" style="min-width: 140px;">
+              <button class="nav-link" id="business-tab" data-bs-toggle="tab" data-bs-target="#business" type="button" role="tab" aria-controls="business" aria-selected="false">
+                Business Loan
+              </button>
+            </li>
+            <li class="nav-item flex-fill text-center" role="presentation" style="min-width: 140px;">
+              <button class="nav-link" id="investment-tab" data-bs-toggle="tab" data-bs-target="#investment" type="button" role="tab" aria-controls="investment" aria-selected="false">
+                Investment Loan
+              </button>
+            </li>
+            <li class="nav-item flex-fill text-center" role="presentation" style="min-width: 140px;">
+              <button class="nav-link" id="emergency-tab" data-bs-toggle="tab" data-bs-target="#emergency" type="button" role="tab" aria-controls="emergency" aria-selected="false">
+                Emergency Loan
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content bg-light rounded-bottom shadow-sm p-4" id="loanTypeTabsContent">
+            <div class="tab-pane fade show active" id="personal" role="tabpanel" aria-labelledby="personal-tab">
+              <h5 class="text-primary mb-2">Personal Crypto Loan</h5>
+              <ul class="list-unstyled mb-2">
+                <li><strong>Minimum:</strong> ${{ loan_types.personal.min }}</li>
+                <li><strong>Maximum:</strong> ${{ loan_types.personal.max }}</li>
+                <li><strong>Term:</strong> {{ loan_types.personal.term }}</li>
+                <li><strong>Interest Rate:</strong> {{ loan_types.personal.interest_rate }}</li>
+                <li><strong>Collateral:</strong> BTC, ETH, USDT</li>
+                <li><strong>Purpose:</strong> Personal expenses, travel, education, etc.</li>
+              </ul>
+            </div>
+            <div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
+              <h5 class="text-primary mb-2">Business Loan</h5>
+              <ul class="list-unstyled mb-2">
+                <li><strong>Minimum:</strong> $5,000</li>
+                <li><strong>Maximum:</strong> $100,000</li>
+                <li><strong>Term:</strong> 3 - 24 months</li>
+                <li><strong>Interest Rate:</strong> From 5.9% APR</li>
+                <li><strong>Collateral:</strong> BTC, ETH, USDT</li>
+                <li><strong>Purpose:</strong> Business expansion, equipment, working capital.</li>
+              </ul>
+            </div>
+            <div class="tab-pane fade" id="investment" role="tabpanel" aria-labelledby="investment-tab">
+              <h5 class="text-primary mb-2">Crypto Investment Loan</h5>
+              <ul class="list-unstyled mb-2">
+                <li><strong>Minimum:</strong> $2,000</li>
+                <li><strong>Maximum:</strong> $50,000</li>
+                <li><strong>Term:</strong> 1 - 6 months</li>
+                <li><strong>Interest Rate:</strong> From 7.2% APR</li>
+                <li><strong>Collateral:</strong> BTC, ETH, USDT</li>
+                <li><strong>Purpose:</strong> Leverage crypto investments without selling assets.</li>
+              </ul>
+            </div>
+            <div class="tab-pane fade" id="emergency" role="tabpanel" aria-labelledby="emergency-tab">
+              <h5 class="text-primary mb-2">Emergency Loan</h5>
+              <ul class="list-unstyled mb-2">
+                <li><strong>Minimum:</strong> $300</li>
+                <li><strong>Maximum:</strong> $5,000</li>
+                <li><strong>Term:</strong> 1 - 3 months</li>
+                <li><strong>Interest Rate:</strong> From 8.5% APR</li>
+                <li><strong>Collateral:</strong> BTC, ETH, USDT</li>
+                <li><strong>Purpose:</strong> Medical, urgent bills, unforeseen expenses.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loan Application Progress (optional, can remove if not needed) -->
+        <!--
+        <div class="row text-center loan-steps mb-5">
+          <div class="col step-complete">
+            <div class="step-number">1</div>
+            <div class="text-sm">Loan Details</div>
+          </div>
+          <div class="col step-complete">
+            <div class="step-number">2</div>
+            <div class="text-sm">Personal Info</div>
+          </div>
+          <div class="col step-complete">
+            <div class="step-number">3</div>
+            <div class="text-sm">Collateral</div>
+          </div>
+          <div class="col step-active">
+            <div class="step-number">4</div>
+            <div class="text-sm">Review</div>
+          </div>
+        </div>
+        -->
+
+        <form id="loanApplicationForm" method="post" novalidate>
+          {% csrf_token %}
+
+          <!-- Section 1: Personal Information -->
+          <div class="form-section">
+            <h5 class="mb-4 text-primary"><i class="fas fa-user-circle me-2"></i> Personal Information</h5>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" name="first_name" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" name="last_name" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" name="dob" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Country of Residence</label>
+                <select class="form-select" name="country" required>
+                  <option value="">Select Country</option>
+                  <option>United States</option>
+                  <option>United Kingdom</option>
+                  <option>Canada</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Residential Address</label>
+              <input type="text" class="form-control" name="address" required>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" name="email" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" name="phone" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Taxpayer ID*</label>
+                <input type="text" class="form-control" name="taxpayer_id" required>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding: 20px;"></div>
+          <!-- Section 2: Employment & Financial Details -->
+          <div class="form-section">
+            <h5 class="mb-4 text-primary"><i class="fas fa-briefcase me-2"></i> Employment & Financial Details</h5>
+            <div class="mb-3">
+              <label class="form-label">Employment Status</label>
+              <select class="form-select" name="employment_status" required>
+                <option value="">Select Status</option>
+                <option>Employed</option>
+                <option>Self-employed</option>
+                <option>Unemployed</option>
+                <option>Student</option>
+                <option>Retired</option>
+              </select>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Current Employer Name</label>
+                <input type="text" class="form-control" name="employer" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Job Title / Occupation</label>
+                <input type="text" class="form-control" name="job_title" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Monthly Income (USD)</label>
+                <input type="number" class="form-control" name="monthly_income" min="0" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Source of Income</label>
+                <select class="form-select" name="income_source" required>
+                  <option value="">Select Source</option>
+                  <option>Salary</option>
+                  <option>Business</option>
+                  <option>Investments</option>
+                  <option>Crypto Trading</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding: 20px;"></div>
+
+          <!-- Section 3: Loan Details -->
+          <div class="form-section">
+            <h5 class="mb-4 text-primary"><i class="fas fa-file-invoice-dollar me-2"></i> Loan Details</h5>
+            <div class="mb-3">
+              <label class="form-label">Loan Purpose</label>
+              <select class="form-select" name="loan_purpose" required>
+                <option value="">Select Purpose</option>
+                <option>Personal</option>
+                <option>Business</option>
+                <option>Investment</option>
+                <option>Emergency</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Loan Amount (USD)</label>
+                <input type="number" class="form-control" name="loan_amount" id="loanAmountInput" min="100" max="100000" required>
+                <div id="loanAmountError" class="text-danger small mt-1" style="display:none;"></div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Preferred Loan Currency</label>
+                <select class="form-select" name="loan_currency" required>
+                  <option>USDT</option>
+                  <option>BTC</option>
+                  <option>ETH</option>
+                  <option>USD</option>
+                  <option>EUR</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Desired Loan Term</label>
+                <select class="form-select" name="loan_term" required>
+                  <option>30 days</option>
+                  <option>90 days</option>
+                  <option>6 months</option>
+                  <option>1 year</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Repayment Plan</label>
+                <select class="form-select" name="repayment_plan" required>
+                  <option>Monthly</option>
+                  <option>Bi-weekly</option>
+                  <option>Weekly</option>
+                  <option>Bullet Payment</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" name="existing_loan" id="existingLoan">
+              <label class="form-check-label" for="existingLoan">
+                I currently have an existing loan
+              </label>
+            </div>
+          </div>
+
+          <div style="padding: 20px;"></div>
+          <!-- Section 4: Collateral Details -->
+          <div class="form-section">
+            <h5 class="mb-4 text-primary"><i class="fas fa-lock me-2"></i> Collateral Details</h5>
+            <p class="mb-4">Select the cryptocurrency you want to use as collateral for your loan.</p>
+            <div class="row g-3 mb-3">
+              <div class="col-12 col-md-4">
+                <div class="card collateral-card h-100">
+                  <div class="card-body text-center">
+                    <img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" width="48" alt="BTC" class="mb-3">
+                    <h5>Bitcoin (BTC)</h5>
+                    <p class="text-muted">Loan-to-Value: Up to 70%</p>
+                    <div class="form-check d-flex justify-content-center">
+                      <input class="form-check-input" type="radio" name="collateral" value="BTC" id="btcCollateral" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card collateral-card h-100">
+                  <div class="card-body text-center">
+                    <img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" width="48" alt="ETH" class="mb-3">
+                    <h5>Ethereum (ETH)</h5>
+                    <p class="text-muted">Loan-to-Value: Up to 65%</p>
+                    <div class="form-check d-flex justify-content-center">
+                      <input class="form-check-input" type="radio" name="collateral" value="ETH" id="ethCollateral" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="card collateral-card h-100">
+                  <div class="card-body text-center">
+                    <img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" width="48" alt="USDT" class="mb-3">
+                    <h5>Tether (USDT)</h5>
+                    <p class="text-muted">Loan-to-Value: Up to 90%</p>
+                    <div class="form-check d-flex justify-content-center">
+                      <input class="form-check-input" type="radio" name="collateral" value="USDT" id="usdtCollateral" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Collateral Amount</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="collateral_amount" id="collateralAmountInput" placeholder="0.00" required>
+                <span class="input-group-text" id="collateralCurrencyLabel">USDT</span>
+              </div>
+              <div class="form-text">Approx. value: $--</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Wallet Address for Collateral</label>
+              <input type="text" class="form-control" name="collateral_wallet" placeholder="0x..." required>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" name="agree_collateral" id="agreeTerms" required>
+              <label class="form-check-label" for="agreeTerms">
+                I agree to lock my collateral in a smart contract for the duration of the loan
+              </label>
+            </div>
+          </div>
+
+
+          <div style="padding: 20px;"></div>
+
+          <!-- Section 5: Review & Submit -->
+          <div class="form-section">
+            <h5 class="mb-4 text-primary"><i class="fas fa-check-circle me-2"></i> Review Your Application</h5>
+            <div class="bg-light rounded p-4 mb-4">
+              <h6 class="text-primary">Loan Summary</h6>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <p><strong>Loan Amount:</strong> <span id="review-amount">$1,000</span></p>
+                  <p><strong>Loan Term:</strong> <span id="review-term">90 days</span></p>
+                  <p><strong>Interest Rate:</strong> <span id="review-rate">
+                    {% if loan_types %}
+                      <span id="review-rate-value">{{ loan_types.personal.interest_rate|default:"5.99% APR" }}</span>
+                    {% else %}
+                      5.99% APR
+                    {% endif %}
+                  </span></p>
+                </div>
+                <div class="col-md-6">
+                  <p><strong>Collateral:</strong>
+                    <span id="review-collateral-amount">--</span>
+                    <span id="review-collateral-currency">USDT</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <h6 class="text-primary">Personal Information</h6>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <p><strong>Name:</strong> <span id="review-name">John Doe</span></p>
+                  <p><strong>Email:</strong> <span id="review-email">john@example.com</span></p>
+                </div>
+                <div class="col-md-6">
+                  <p><strong>Phone:</strong> <span id="review-phone">+1 234 567 890</span></p>
+                  <p><strong>Country:</strong> <span id="review-country">United States</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" name="confirm_accuracy" id="confirmAccuracy" required>
+              <label class="form-check-label" for="confirmAccuracy">
+                I confirm that all information provided is accurate
+              </label>
+            </div>
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" name="agree_terms" id="agreeToTerms" required>
+              <label class="form-check-label" for="agreeToTerms">
+                I agree to the 
+                <a href="{% url 'terms' %}" target="_blank" style="text-decoration: underline;">Loan Terms and Conditions</a> 
+                and 
+                <a href="{% url 'privacy' %}" target="_blank" style="text-decoration: underline;">Privacy Policy</a>
+              </label>
+            </div>
+          </div>
+
+          <!-- Only Back and Submit buttons at the bottom -->
+          <div class="d-flex justify-content-between mt-4">
+            <a href="{% url 'user:dashboard' %}" class="btn btn-outline-primary"><i class="fas fa-arrow-left me-2"></i> Back</a>
+            <button type="submit" class="btn btn-primary">Submit Application <i class="fas fa-paper-plane ms-2"></i></button>
+          </div>
+        </form>
+
+        <div class="d-md-none text-center text-muted small mb-2" style="margin-top:-10px;">
+          <i class="bi bi-arrow-right"></i> Scroll to see more
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script>
+  $(document).ready(function() {
+    // Collateral card selection
+    $('.collateral-card').click(function() {
+      $('.collateral-card').removeClass('selected');
+      $(this).addClass('selected');
+      $(this).find('input[type="radio"]').prop('checked', true);
+    });
+
+    // Live review update (optional, keep if you want live preview)
+    $('input, select').on('change keyup', function() {
+      // Name, email, phone, country
+      $('#review-name').text($('input[name="first_name"]').val() + ' ' + $('input[name="last_name"]').val());
+      $('#review-email').text($('input[name="email"]').val());
+      $('#review-phone').text($('input[name="phone"]').val());
+      $('#review-country').text($('select[name="country"]').val());
+      $('#review-amount').text('$' + numberWithCommas($('input[name="loan_amount"]').val()));
+      $('#review-term').text($('select[name="loan_term"]').val());
+
+      // Collateral amount and currency
+      var collateralAmount = $('input[name="collateral_amount"]').val();
+      var collateralCurrency = $('input[name="collateral"]:checked').val() || 'USDT';
+      $('#review-collateral-amount').text(numberWithCommas(collateralAmount));
+      $('#review-collateral-currency').text(collateralCurrency);
+
+      // Update currency label on input
+      $('#collateralCurrencyLabel').text(collateralCurrency);
+
+      // Interest rate based on loan type
+      var loanType = $('select[name="loan_purpose"]').val() || 'Personal';
+      var rates = {
+        'Personal': '{{ loan_types.personal.interest_rate|default:"5.99% APR" }}',
+        'Business': '{{ loan_types.business.interest_rate|default:"5.49% APR" }}',
+        'Investment': '{{ loan_types.investment.interest_rate|default:"7.20% APR" }}',
+        'Emergency': '{{ loan_types.emergency.interest_rate|default:"8.50% APR" }}'
+      };
+      $('#review-rate-value').text(rates[loanType] || '5.99% APR');
+    });
+
+    // Format number with commas as user types
+    $('#collateralAmountInput').on('input', function() {
+      var value = $(this).val().replace(/,/g, '');
+      if (!isNaN(value) && value.length > 0) {
+        var formatted = numberWithCommas(value);
+        $(this).val(formatted);
+        $('#review-collateral-amount').text(formatted);
+      } else {
+        $('#review-collateral-amount').text('--');
+      }
+    });
+
+    // Loan type max values from Django context
+    var maxAmounts = {
+      'Personal': {{ loan_types.personal.max|default:20000 }},
+      'Business': {{ loan_types.business.max|default:100000 }},
+      'Investment': {{ loan_types.investment.max|default:50000 }},
+      'Emergency': {{ loan_types.emergency.max|default:5000 }}
+    };
+
+    function validateLoanAmount() {
+      var loanType = $('select[name="loan_purpose"]').val() || 'Personal';
+      var maxAmount = maxAmounts[loanType] || 20000;
+      var amount = parseInt($('#loanAmountInput').val().replace(/,/g, ''), 10);
+      if (amount > maxAmount) {
+        $('#loanAmountError').text(
+          'The maximum allowed for a ' + loanType + ' Loan is $' + numberWithCommas(maxAmount) + '.'
+        ).show();
+        return false;
+      } else {
+        $('#loanAmountError').hide();
+        return true;
+      }
+    }
+
+    // Validate on input and loan type change
+    $('#loanAmountInput, select[name="loan_purpose"]').on('input change', validateLoanAmount);
+
+    // Prevent form submission if invalid
+    $('#loanApplicationForm').on('submit', function(e) {
+      if (!validateLoanAmount()) {
+        e.preventDefault();
+        $('#loanAmountInput').focus();
+      } else {
+        $(this).find('button[type="submit"]').prop('disabled', true);
+      }
+    });
+  });
+
+  // Helper function
+  function numberWithCommas(x) {
+    if (!x) return '';
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+  }
+</script>
+{% endblock %}

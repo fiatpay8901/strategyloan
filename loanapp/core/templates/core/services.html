@@ -1,0 +1,75 @@
+{% extends "core/base.html" %}
+{% load static %} 
+    {% block title %}Service{% endblock %}
+
+    {% block content %}
+
+  <!-- Services Section -->
+  <section class="services-three">
+    <div class="container">
+      <div class="heading-box text-center">
+        <span class="heading-subtitle">🤝 OUR SERVICES</span>
+        <h2 class="heading-title">Explore Crypto-Based Lending Tailored to You</h2>
+      </div>
+      <div class="row gutter-y-40">
+        <div class="col-md-4">
+          <div class="services-three-box">
+            <i class="flaticon-personal"></i>
+            <h3>Personal Crypto Loans</h3>
+            <p>Secure personal financing backed by crypto or fiat with no upfront collateral. Transparent terms and instant access to funds.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="services-three-box">
+            <i class="flaticon-money-bag"></i>
+            <h3>Business Expansion Loans</h3>
+            <p>Fuel your startup or enterprise with flexible capital. Loans disbursed in BTC, ETH, USDT, or traditional currency — your choice.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="services-three-box">
+            <i class="flaticon-mortgage-loan"></i>
+            <h3>Real Estate & Asset Financing</h3>
+            <p>Access up to €500M for commercial or residential projects. Backed by blockchain underwriting for faster approvals.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="services-three-box">
+            <i class="flaticon-loan-1"></i>
+            <h3>Emergency Funds</h3>
+            <p>Get rapid-response loans to handle unexpected costs. Crypto-backed liquidity with 10-day disbursement guarantee.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="services-three-box">
+            <i class="flaticon-mortarboard"></i>
+            <h3>Education Loans</h3>
+            <p>Study at home or abroad with flexible student loans. Powered by crypto and built with low interest and grace periods.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="services-three-box">
+            <i class="flaticon-money-bag-1"></i>
+            <h3>Small Business Support</h3>
+            <p>Designed for SMEs and solopreneurs. Access fast financing without traditional red tape or upfront collateral.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-one">
+    <div class="container">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-lg-9">
+          <h2>Let’s lift your vision — with secure, collateral-free crypto loans.</h2>
+        </div>
+        <div class="col-lg-3 text-end">
+          <a href="{% url 'user:register' %}" class="btn btn-secondary">Apply Now <i class="flaticon-next"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ {% endblock %}

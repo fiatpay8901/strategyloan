@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+<link href="{% static 'images/favicon.png' %}" rel="icon" />
+<title>{% block title %}Admin Panel{% endblock %}</title>
+<meta name="description" content="Admin Panel">
+<meta name="author" content="LoanLift">
+
+<!-- Web Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap">
+
+<!-- Stylesheet -->
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/font-awesome/css/all.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/owl.carousel/assets/owl.carousel.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}" />
+</head>
+<body>
+
+<!-- Document Wrapper -->
+<div id="main-wrapper"> 
+  
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <div class="header-row">
+        <div class="header-column justify-content-start"> 
+          <!-- Logo -->
+          <div class="logo me-3">
+            <a class="d-flex" href="{% url 'adminpanel:admin_dashboard' %}" title="Admin Dashboard">
+              <img src="{% static 'images/logo.png' %}" alt="LoanLift" />
+            </a>
+          </div>
+          <!-- Collapse Button -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#header-nav">
+            <span></span> <span></span> <span></span>
+          </button>
+          <!-- Primary Navigation -->
+          <nav class="primary-menu navbar navbar-expand-lg navbar-dropdown-dark">
+            <div id="header-nav" class="collapse navbar-collapse">
+              <!-- Add navigation items here if needed -->
+            </div>
+          </nav>
+        </div>
+        <div class="header-column justify-content-end"> 
+          <li><a href=""></a> </li>
+          <!-- Logout Form -->
+          <form method="post" action="{% url 'adminpanel:admin_logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Log Out</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Header End --> 
+
+  <!-- Main Content -->
+  {% block content %}
+  {% endblock %}
+
+ <!-- Footer -->
+<footer class="bg-light py-3">
+  <div class="container text-center small text-muted">
+    &copy; 2025 Strategy Loan. All Rights Reserved.
+  </div>
+</footer>
+
+</div>
+<!-- Document Wrapper end --> 
+
+<!-- Script --> 
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script> 
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script> 
+<script src="{% static 'vendor/bootstrap-select/js/bootstrap-select.min.js' %}"></script> 
+<script src="{% static 'vendor/owl.carousel/owl.carousel.min.js' %}"></script> 
+<script src="{% static 'js/theme.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>

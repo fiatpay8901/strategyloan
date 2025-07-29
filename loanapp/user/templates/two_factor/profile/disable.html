@@ -1,0 +1,48 @@
+{% extends "user/base.html" %}
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block title %}{% trans "Disable Two-Factor Authentication" %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+    <div class="bg-white shadow-sm rounded p-4 mb-4 text-center">
+      <h3 class="mb-3 text-danger">
+        <i class="fas fa-exclamation-triangle me-2"></i>
+        {% trans "Disable Two-Factor Authentication?" %}
+      </h3>
+
+      <p class="lead mb-4">
+        {% blocktrans trimmed %}
+          You are about to disable two-factor authentication. This will make your account less secure.
+        {% endblocktrans %}
+      </p>
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+
+        <table class="table table-borderless w-100 text-start align-middle mb-3">
+          <tr>
+            <th class="text-end pe-3" style="width: 40%;">
+              <label for="{{ form.confirm.id_for_label }}" class="form-label">
+                {% trans "Yes, I am sure:" %}
+              </label>
+            </th>
+            <td>
+              {{ form.understand|add_class:"form-check-input" }}
+              <div class="invalid-feedback d-block" style="{% if not form.confirm.errors %}display: none;{% endif %}">
+                {{ form.confirm.errors|striptags }}
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <button class="btn btn-danger" type="submit">
+          <i class="fas fa-trash-alt me-1"></i> {% trans "Disable" %}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

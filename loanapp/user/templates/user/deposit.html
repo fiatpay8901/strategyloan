@@ -1,0 +1,85 @@
+{% extends "user/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center">Deposit Funds</h2>
+  <div class="col-md-6 mx-auto bg-white shadow-sm rounded p-4 px-sm-5">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+
+      <div class="mb-3">
+        <label class="form-label">Select Deposit Method</label>
+        {{ form.method }}
+        {{ form.method.errors }}
+      </div>
+
+      <div class="mb-3" id="cryptoBox" style="display: none;">
+        <label class="form-label">Select Cryptocurrency</label>
+        {{ form.coin }}
+        {{ form.coin.errors }}
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Amount (USD)</label>
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+          {{ form.amount }}
+        </div>
+        {{ form.amount.errors }}
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Continue</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% if transaction.method.category == 'bank' %}
+  <div class="container py-5">
+    <h2 class="mb-4 text-center">Bank Deposit Details</h2>
+    <div class="col-md-6 mx-auto bg-white shadow-sm rounded p-4 px-sm-5">
+      <p class="mb-1">Please make your deposit to the following account:</p>
+      <strong>{{ transaction.bank_option.account_name }}</strong><br>
+      Bank: {{ transaction.bank_option.bank_name }}<br>
+      Account Number: {{ transaction.bank_option.account_number }}<br>
+      Reference: <strong>{{ transaction.reference }}</strong>
+    </div>
+  </div>
+{% endif %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const methodSelect = document.getElementById("id_method");
+    const cryptoBox = document.getElementById("cryptoBox");
+    const amountInput = document.getElementById("id_amount");
+
+    function toggleCryptoDropdown() {
+      if (!methodSelect) return;
+      const selected = methodSelect.value;
+      cryptoBox.style.display = (selected && (selected.includes("crypto") || selected.toLowerCase() === 'crypto')) ? 'block' : 'none';
+    }
+
+    if (methodSelect) {
+      methodSelect.addEventListener('change', toggleCryptoDropdown);
+      toggleCryptoDropdown();  // Run on load
+    }
+
+    // Force amount input to type text and format with commas
+    if (amountInput) {
+      amountInput.setAttribute('type', 'text');
+      amountInput.setAttribute('autocomplete', 'off');
+      amountInput.addEventListener('input', function(e) {
+        let value = amountInput.value.replace(/,/g, '');
+        if (!isNaN(value) && value !== '') {
+          const parts = value.split('.');
+          parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          amountInput.value = parts.join('.');
+        }
+      });
+    }
+  });
+</script>
+{% endblock %}

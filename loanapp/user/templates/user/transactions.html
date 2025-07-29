@@ -1,0 +1,191 @@
+{% extends "user/base.html" %}
+{% load static %}
+
+{% block title %}Transactions - Strategy Loan{% endblock %}
+
+{% block content %}
+<div id="main-wrapper">
+  <div id="content" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <h2 class="fw-400 mb-3">Transactions</h2>
+          <!-- Filter (static, for now) -->
+          <div class="row">
+            <div class="col mb-2">
+              <form id="filterTransactions" method="post">
+                <div class="row g-3 mb-3">
+                  <div class="col-sm-6 col-md-5">
+                    <div class="position-relative">
+                      <input id="dateRange" type="text" class="form-control" placeholder="Date Range">
+                      <span class="icon-inside"><i class="fas fa-calendar-alt"></i></span>
+                    </div>
+                  </div>
+                  <div class="col-auto d-flex align-items-center me-auto form-group" data-bs-toggle="collapse">
+                    <a class="btn-link" data-bs-toggle="collapse" href="#allFilters" aria-expanded="false" aria-controls="allFilters">All Filters<i class="fas fa-sliders-h text-3 ms-1"></i></a>
+                  </div>
+                  <div class="col-auto d-flex align-items-center ms-auto">
+                    <div class="dropdown">
+                      <a class="text-muted btn-link" href="#" role="button" id="statements" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-file-download text-3 me-1"></i>Statements
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="statements">
+                        <a class="dropdown-item" href="#">CSV</a>
+                        <a class="dropdown-item" href="#">PDF</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 collapse" id="allFilters">
+                    <!-- Filter options (static for now) -->
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="allTransactions" name="allFilters" checked>
+                      <label class="form-check-label" for="allTransactions">All Transactions</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="paymentsSend" name="allFilters">
+                      <label class="form-check-label" for="paymentsSend">Payments Send</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="paymentsReceived" name="allFilters">
+                      <label class="form-check-label" for="paymentsReceived">Payments Received</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="refunds" name="allFilters">
+                      <label class="form-check-label" for="refunds">Refunds</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="withdrawal" name="allFilters">
+                      <label class="form-check-label" for="withdrawal">Withdrawal</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="deposit" name="allFilters">
+                      <label class="form-check-label" for="deposit">Deposit</label>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- Deposit Transactions Table -->
+          <div class="bg-white shadow-sm rounded py-4 mb-4">
+            <h3 class="text-5 fw-400 d-flex align-items-center px-4 mb-4">Deposit Transactions</h3>
+            <div class="table-responsive px-4">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                    <th>Proof</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for deposit in deposits %}
+                  <tr>
+                    <td>{{ deposit.submitted_at|date:"Y-m-d H:i" }}</td>
+                    <td>${{ deposit.amount }}</td>
+                    <td>{{ deposit.method.name }}</td>
+                    <td>
+                      <span class="badge 
+                        {% if deposit.status == 'approved' %}bg-success
+                        {% elif deposit.status == 'pending' %}bg-warning text-dark
+                        {% elif deposit.status == 'rejected' %}bg-danger
+                        {% else %}bg-secondary{% endif %}">
+                        {{ deposit.get_status_display }}
+                      </span>
+                    </td>
+                    <td>
+                      {% if deposit.proof %}
+                        <a href="{{ deposit.proof.url }}" target="_blank" class="btn btn-sm btn-outline-info">View</a>
+                      {% else %}
+                        N/A
+                      {% endif %}
+                    </td>
+                  </tr>
+                  {% empty %}
+                  <tr>
+                    <td colspan="5" class="text-center">No deposits yet.</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Loan Application History Table -->
+          <div class="bg-white shadow-sm rounded py-4 mb-4">
+            <h3 class="text-5 fw-400 d-flex align-items-center px-4 mb-4">Loan Application History</h3>
+            <div class="table-responsive px-4">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Purpose</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for loan in loans %}
+                  <tr>
+                    <td>{{ loan.submitted_at|date:"Y-m-d H:i" }}</td>
+                    <td>${{ loan.amount }}</td>
+                    <td>
+                      <span class="badge 
+                        {% if loan.status == 'approved' %}bg-success
+                        {% elif loan.status == 'review' %}bg-warning text-dark
+                        {% elif loan.status == 'rejected' %}bg-danger
+                        {% else %}bg-secondary{% endif %}">
+                        {{ loan.get_status_display }}
+                      </span>
+                    </td>
+                    <td>{{ loan.purpose|default:"-" }}</td>
+                  </tr>
+                  {% empty %}
+                  <tr>
+                    <td colspan="4" class="text-center">No loan applications yet.</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Middle End -->
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+<script>
+$(function() {
+  'use strict';
+  var start = moment().subtract(29, 'days');
+  var end = moment();
+  function cb(start, end) {
+    $('#dateRange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+  }
+  $('#dateRange').daterangepicker({
+    startDate: start,
+    endDate: end,
+    ranges: {
+      'Today': [moment(), moment()],
+      'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+      'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+      'This Month': [moment().startOf('month'), moment().endOf('month')],
+      'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    }
+  }, cb);
+  cb(start, end);
+});
+</script>
+<script src="{% static 'js/theme.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,293 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" />
+  <title>{% block title %}Strategy Loan User Dashboard{% endblock %}</title>
+  <meta name="description" content="Strategy Loan - Manage your crypto-backed loans easily and securely.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/all.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="{% static 'two_factor/css/theme.css' %}">
+
+  <style>
+.loan-tabs-scroll {
+  position: relative;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  border-bottom: 1px solid #dee2e6;
+  scrollbar-width: thin;
+  scrollbar-color: #fa660f #f5f5f5;
+}
+.loan-tabs-scroll .nav-item {
+  flex: 0 0 auto;
+  min-width: 140px;
+}
+.loan-tabs-scroll .nav-link {
+  white-space: nowrap;
+  text-align: center;
+}
+.loan-tabs-scroll::-webkit-scrollbar {
+  height: 6px;
+  background: #f5f5f5;
+}
+.loan-tabs-scroll::-webkit-scrollbar-thumb {
+  background: #fa660f;
+  border-radius: 3px;
+}
+@media (max-width: 767.98px) {
+  .loan-tabs-scroll {
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    border-bottom: 1px solid #dee2e6;
+  }
+}
+  </style>
+
+  <style>
+    body.dark-mode {
+      background-color: #000;
+      color: #f5f5f5;
+    }
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode h3,
+    body.dark-mode h4,
+    body.dark-mode h5,
+    body.dark-mode h6 {
+      color: #fa660f !important;
+    }
+    body.dark-mode .bg-light {
+      background-color: #1a1a1a !important;
+      color: #ffffff !important;
+    }
+    body.dark-mode .text-primary {
+      color: #fa660f !important;
+    }
+    body.dark-mode .bg-light p,
+    body.dark-mode .bg-light span,
+    body.dark-mode .bg-light strong {
+      color: #f5f5f5 !important;
+    }
+    body.dark-mode .py-4 {
+      background-color: #0d0d0d !important;
+    }
+    body.dark-mode .bg-white,
+    body.dark-mode .card,
+    body.dark-mode .shadow-sm {
+      background-color: #1e1e1e !important;
+      color: #f5f5f5 !important;
+      box-shadow: 0 0 0 1px #333, 0 4px 12px rgba(0, 0, 0, 0.7) !important;
+    }
+    body.dark-mode .text-muted {
+      color: #bbb !important;
+    }
+    body.dark-mode .text-dark {
+      color: #f5f5f5 !important;
+    }
+    body.dark-mode .btn-outline-primary {
+      color: #fa660f;
+      border-color: #fa660f;
+    }
+    body.dark-mode .btn-outline-primary:hover {
+      background-color: #fa660f;
+      color: #fff;
+    }
+    body.dark-mode table {
+      color: #f5f5f5;
+    }
+    body.dark-mode .table-striped > tbody > tr:nth-of-type(odd) {
+      background-color: #1a1a1a;
+    }
+    body.dark-mode .table-striped > tbody > tr:nth-of-type(even) {
+      background-color: #111;
+    }
+    body.dark-mode .table td,
+    body.dark-mode .table th {
+      color: #e0e0e0;
+    }
+    body.dark-mode .dropdown-menu {
+      background-color: #1e1e1e;
+      color: #f5f5f5;
+    }
+    body.dark-mode .dropdown-item {
+      color: #f5f5f5;
+    }
+    body.dark-mode .dropdown-item:hover {
+      background-color: #333;
+    }
+    body.dark-mode #header .primary-menu::before {
+      background: #1e1e1e !important;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6) !important;
+      transition: background-color 0.3s ease-in-out;
+    }
+    body.dark-mode .primary-menu .navbar-nav a {
+      transition: color 0.3s ease, background-color 0.3s ease;
+      color: #f5f5f5 !important;
+    }
+    body.dark-mode .primary-menu .navbar-nav a:hover,
+    body.dark-mode .primary-menu .navbar-nav .active > a,
+    body.dark-mode .primary-menu .navbar-nav a.active {
+      color: #f5f5f5 !important;
+      background-color: transparent;
+      font-weight: 500;
+      border-bottom: 2px solid #fa660f;
+    }
+    .theme-toggle-btn {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .theme-toggle-btn.sun {
+      color: #FFD700; /* gold */
+    }
+    .theme-toggle-btn.moon {
+      color: #c0c0c0; /* silvery gray like the moon */
+    }
+
+    .btn-primary.disabled,
+.btn-primary:disabled,
+.btn-primary[aria-disabled="true"] {
+    background-color: #fa660f !important;
+    border-color: #fa660f !important;
+    color: #fff !important;
+    opacity: 0.65;
+    pointer-events: none;
+}
+
+  </style>
+</head>
+<body>
+<div id="main-wrapper">
+  <!-- Header -->
+  <header id="header" style="background-color: #fa660f;">
+    <div class="container">
+      <div class="header-row">
+        <div class="header-column justify-content-start">
+          <div class="logo me-3">
+            <a class="d-flex" href="{% url 'user:dashboard' %}" title="Strategy Loan">
+              <img src="{% static 'images/logo.png' %}" class="img-fluid" width="180px" alt="Strategy Loan">
+            </a>
+          </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#header-nav" aria-controls="header-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+          </button>
+          <nav class="primary-menu navbar navbar-expand-lg">
+            <div id="header-nav" class="collapse navbar-collapse">
+              <ul class="navbar-nav me-auto" style="padding-left: 30px;">
+                <li class="{% if request.path == '/user/dashboard/' %}active{% endif %}">
+                  <a href="{% url 'user:dashboard' %}">Dashboard</a>
+                </li>
+                <li class="{% if request.path == '/user/transactions/' %}active{% endif %}">
+                  <a href="{% url 'user:transactions' %}">Transactions</a>
+                </li>
+                <li class="{% if request.path == '/user/withdraw/' %}active{% endif %}">
+                  <a href="{% url 'user:withdraw' %}">Withdraw</a>
+                </li>
+                <li class="{% if request.path == '/user/loan/apply/' %}active{% endif %}">
+                  <a href="{% url 'user:loan_apply' %}">Apply for Loan</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="header-column justify-content-end">
+          <nav class="login-signup navbar navbar-expand">
+            <ul class="navbar-nav">
+              <li class="dropdown profile ms-2 d-flex align-items-center">
+                <!-- Icon toggle button -->
+                <button id="themeToggle" class="theme-toggle-btn sun me-2">
+                  <i class="bi" id="themeIcon"></i>
+                </button>
+                <a class="px-0 dropdown-toggle d-flex align-items-center" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img class="rounded-circle border"
+                       src="{% if request.user.userprofile.profile_picture %}{{ request.user.userprofile.profile_picture.url }}{% else %}{% static 'images/profile-thumb-sm.jpg' %}{% endif %}"
+                       width="40" height="40" alt="Profile Picture"
+                       style="object-fit: cover;">
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="text-center text-3 py-2">Hi, {{ request.user.first_name|default:request.user.username }}</li>
+                  <li class="dropdown-divider mx-n3"></li>
+                  <li><a class="dropdown-item" href="{% url 'user:profile_settings' %}"><i class="fas fa-id-card"></i> Settings</a></li>
+                  <li>
+                    <form id="logout-form" action="{% url 'user:logout' %}" method="post" style="display: none;">
+                      {% csrf_token %}
+                    </form>
+                    <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Page Content -->
+  <div id="content" class="py-4">
+    <div class="container">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+</div>
+
+<footer class="bg-light py-3">
+  <div class="container text-center small text-muted">
+    &copy; 2025 Strategy Loan. All Rights Reserved.
+  </div>
+</footer>
+<!-- Scripts -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/theme.js' %}"></script>
+<script src="{% static 'two_factor/js/jquery-1.11.3.min.js' %}"></script>
+<script src="{% static 'two_factor/js/jquery.bootstrap.wizard.min.js' %}"></script>
+<script src="{% static 'two_factor/js/two_factor.js' %}"></script>
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeIcon');
+  const savedTheme = localStorage.getItem('theme');
+
+  function setThemeIcon(mode) {
+    icon.className = '';
+    icon.classList.add('bi');
+    toggle.classList.remove('sun', 'moon');
+    if (mode === 'dark') {
+      icon.classList.add('bi-moon-fill');
+      toggle.classList.add('moon');
+    } else {
+      icon.classList.add('bi-sun-fill');
+      toggle.classList.add('sun');
+    }
+  }
+
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    setThemeIcon('dark');
+  } else {
+    setThemeIcon('light');
+  }
+
+  toggle.addEventListener('click', function () {
+    const isDark = document.body.classList.toggle('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    setThemeIcon(isDark ? 'dark' : 'light');
+  });
+</script>
+</body>
+</html>

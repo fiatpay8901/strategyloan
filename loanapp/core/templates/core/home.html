@@ -1,0 +1,615 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Strategy Loan | Home{% endblock %}
+
+{% block content %}
+<section class="banner-two">
+    <div class="container-fluid p-0">
+        <div class="banner-two-slider">
+
+            <!-- Slide 1: General Introduction -->
+            <div class="banner-two-slider-item" data-dot="Global Financing">
+                <div class="banner-two-slider-item-image zoom-in">
+                    <img src="{% static 'assets/images/background/banner-two-bg.jpg' %}" alt="banner-image-1">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 m-auto">
+                            <div class="banner-two-info text-center">
+                                <div class="banner-title fade-left">
+                                    <h1>Unlock Global Project Financing with Crypto</h1>
+                                </div>
+                                <div class="section-details fade-left">
+                                    <p>Strategy Loan offers institutional-grade funding solutions — up to €500M — powered by blockchain and traditional finance.</p>
+                                </div>
+                                <div class="banner-two-btn">
+                                    <a href="{% url 'user:register' %}" class="btn btn-primary">Register Now <i class="flaticon-next"></i></a>
+                                    <a href="{% url 'terms' %}" class="btn btn-light">See Terms <i class="flaticon-next"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Crypto-Fiat Flexibility -->
+            <div class="banner-two-slider-item" data-dot="Crypto or Fiat">
+                <div class="banner-two-slider-item-image zoom-in">
+                    <img src="{% static 'assets/images/background/banner-two-bg-2.jpg' %}" alt="banner-image-2">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 m-auto">
+                            <div class="banner-two-info text-center">
+                                <div class="banner-title fade-left">
+                                    <h1>Choose Crypto or Fiat — Get Funded Fast</h1>
+                                </div>
+                                <div class="section-details fade-left">
+                                    <p>Receive funds in BTC, ETH, USDT, EUR, or USD. No upfront collateral. 2% fixed interest. 10-year term.</p>
+                                </div>
+                                <div class="banner-two-btn">
+                                    <a href="{% url 'user:register' %}" class="btn btn-primary">How It Works <i class="flaticon-next"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: No Collateral. No Delay. -->
+            <div class="banner-two-slider-item" data-dot="No Collateral">
+                <div class="banner-two-slider-item-image zoom-in">
+                    <img src="{% static 'assets/images/background/banner-two-bg-3.jpg' %}" alt="banner-image-3">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 m-auto">
+                            <div class="banner-two-info text-center">
+                                <div class="banner-title fade-left">
+                                    <h1>Zero Upfront Collateral — Fully Underwritten</h1>
+                                </div>
+                                <div class="section-details fade-left">
+                                    <p>Funding is secured by UK-based underwriting agreements. Disbursement within 10 business days.</p>
+                                </div>
+                                <div class="banner-two-btn">
+                                    <a href="{% url 'user:register' %}" class="btn btn-primary">Apply for Loan <i class="flaticon-next"></i></a>
+                                    <a href="{% url 'faq' %}" class="btn btn-light">View FAQs <i class="flaticon-next"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Vision Funding -->
+            <div class="banner-two-slider-item" data-dot="Fund Your Vision">
+                <div class="banner-two-slider-item-image zoom-in">
+                    <img src="{% static 'assets/images/background/banner-two-bg-4.jpg' %}" alt="banner-image-4">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 m-auto">
+                            <div class="banner-two-info text-center">
+                                <div class="banner-title fade-left">
+                                    <h1>Your Vision. Our Capital.</h1>
+                                </div>
+                                <div class="section-details fade-left">
+                                    <p>Whether it's infrastructure, energy, real estate, or innovation — we power your growth with decentralized funding.</p>
+                                </div>
+                                <div class="banner-two-btn">
+                                    <a href="{% url 'contact' %}" class="btn btn-primary">Submit Executive Summary <i class="flaticon-next"></i></a>
+                                    <a href="{% url 'contact' %}" class="btn btn-light">Contact Us <i class="flaticon-next"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Icon + Circular Text -->
+        <div class="banner-two__circle">
+                <span class="banner-two-icon">
+                    <i class="flaticon-real-estate"></i>
+                </span>
+                <div class="curved-circle">
+                    <div class="curved-circle--item" data-circle-text-options="{
+                        &quot;radius&quot;: 91,
+                        &quot;forceWidth&quot;: true,
+                        &quot;forceHeight&quot;: true
+                    }" style="position: relative; height: 175.434px;"><span class="char1" style="position: absolute; left: 50%; margin-left: -0.28125em; transform: rotate(-162.772deg); transform-origin: center 5.6875em;">2</span><span class="char2" style="position: absolute; left: 50%; margin-left: -0.3125em; transform: rotate(-154.525deg); transform-origin: center 5.6875em;">5</span><span class="char3" style="position: absolute; left: 50%; margin-left: -0.28125em; transform: rotate(-146.278deg); transform-origin: center 5.6875em;">+</span><span class="char4" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-140.635deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char5" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-137.163deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char6" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-133.69deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char7" style="position: absolute; left: 50%; margin-left: -0.28125em; transform: rotate(-128.047deg); transform-origin: center 5.6875em;">Y</span><span class="char8" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-122.405deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char9" style="position: absolute; left: 50%; margin-left: -0.28125em; transform: rotate(-116.762deg); transform-origin: center 5.6875em;">E</span><span class="char10" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-111.119deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char11" style="position: absolute; left: 50%; margin-left: -0.34375em; transform: rotate(-104.608deg); transform-origin: center 5.6875em;">A</span><span class="char12" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-98.0973deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char13" style="position: absolute; left: 50%; margin-left: -0.3125em; transform: rotate(-92.0205deg); transform-origin: center 5.6875em;">R</span><span class="char14" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-85.9437deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char15" style="position: absolute; left: 50%; margin-left: -0.28125em; transform: rotate(-80.3009deg); transform-origin: center 5.6875em;">S</span><span class="char16" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-74.6581deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char17" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-71.1857deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char18" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-67.7132deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char19" style="position: absolute; left: 50%; margin-left: -0.375em; transform: rotate(-60.7683deg); transform-origin: center 5.6875em;">O</span><span class="char20" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-53.8233deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char21" style="position: absolute; left: 50%; margin-left: -0.28125em; transform: rotate(-48.1805deg); transform-origin: center 5.6875em;">F</span><span class="char22" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-42.5378deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char23" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-39.0653deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char24" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-35.5928deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char25" style="position: absolute; left: 50%; margin-left: -0.28125em; transform: rotate(-29.9501deg); transform-origin: center 5.6875em;">E</span><span class="char26" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-24.3073deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char27" style="position: absolute; left: 50%; margin-left: -0.3125em; transform: rotate(-18.2305deg); transform-origin: center 5.6875em;">X</span><span class="char28" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-12.1537deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char29" style="position: absolute; left: 50%; margin-left: -0.28125em; transform: rotate(-6.51088deg); transform-origin: center 5.6875em;">P</span><span class="char30" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(-0.868118deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char31" style="position: absolute; left: 50%; margin-left: -0.3125em; transform: rotate(5.20871deg); transform-origin: center 5.6875em;">R</span><span class="char32" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(11.2855deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char33" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(14.758deg); transform-origin: center 5.6875em;">I</span><span class="char34" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(18.2305deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char35" style="position: absolute; left: 50%; margin-left: -0.28125em; transform: rotate(23.8732deg); transform-origin: center 5.6875em;">E</span><span class="char36" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(29.516deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char37" style="position: absolute; left: 50%; margin-left: -0.34375em; transform: rotate(36.0269deg); transform-origin: center 5.6875em;">N</span><span class="char38" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(42.5378deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char39" style="position: absolute; left: 50%; margin-left: -0.34375em; transform: rotate(49.0487deg); transform-origin: center 5.6875em;">C</span><span class="char40" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(55.5595deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char41" style="position: absolute; left: 50%; margin-left: -0.28125em; transform: rotate(61.2023deg); transform-origin: center 5.6875em;">E</span><span class="char42" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(66.8451deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char43" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(70.3175deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char44" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(73.79deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char45" style="position: absolute; left: 50%; margin-left: -0.28125em; transform: rotate(79.4328deg); transform-origin: center 5.6875em;">F</span><span class="char46" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(85.0756deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char47" style="position: absolute; left: 50%; margin-left: -0.375em; transform: rotate(92.0205deg); transform-origin: center 5.6875em;">O</span><span class="char48" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(98.9654deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char49" style="position: absolute; left: 50%; margin-left: -0.3125em; transform: rotate(105.042deg); transform-origin: center 5.6875em;">R</span><span class="char50" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(111.119deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char51" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(114.592deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char52" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(118.064deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char53" style="position: absolute; left: 50%; margin-left: -0.25em; transform: rotate(123.273deg); transform-origin: center 5.6875em;">L</span><span class="char54" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(128.481deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char55" style="position: absolute; left: 50%; margin-left: -0.375em; transform: rotate(135.426deg); transform-origin: center 5.6875em;">O</span><span class="char56" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(142.371deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char57" style="position: absolute; left: 50%; margin-left: -0.34375em; transform: rotate(148.882deg); transform-origin: center 5.6875em;">A</span><span class="char58" style="position: absolute; left: 50%; margin-left: -0.125em; transform: rotate(155.393deg); transform-origin: center 5.6875em;">&nbsp;</span><span class="char59" style="position: absolute; left: 50%; margin-left: -0.34375em; transform: rotate(161.904deg); transform-origin: center 5.6875em;">N</span></div>
+                </div>
+            </div>
+    </div>
+</section>
+
+<!-- banner one end -->
+<!-- services one start -->
+<!-- services two start -->
+    <div class="services-two">
+    <div class="services-two-shape-one-1">
+        <img src="static/assets/images/shape/services-two-shape-1.png" alt="shape">
+    </div>
+    <div class="services-two-shape-one-2">
+        <img src="static/assets/images/shape/services-two-shape-2.png" alt="shape">
+    </div>
+    <div class="services-two-inner-bg">
+        <div class="container">
+            <div class="row align-items-center gutter-y-30 mb-3 mb-lg-0">
+                <div class="col-lg-7 col-md-12">
+                    <div class="heading-box always-black">
+                        <span class="heading-subtitle wow fadeInUp animated">🤝 OUR SERVICES</span>
+                        <h2 class="heading-title wow fadeInUp animated">Empowering Your Finances Through Smart Crypto Loans</h2>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-12 text-start text-lg-end">
+                    <a href="{% url 'user:register' %}" class="btn btn-outline-secondary">Get Started <i class="flaticon-next"></i></a>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <ul class="nav nav-tabs justify-content-between border-0" id="services-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal-tab-pane" type="button" role="tab" aria-selected="true">
+                        <i class="flaticon-personal"></i>
+                        <span>Personal Loan</span>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="business-tab" data-bs-toggle="tab" data-bs-target="#business-tab-pane" type="button" role="tab" aria-selected="false">
+                        <i class="flaticon-signing"></i>
+                        <span>Business Loan</span>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="investment-tab" data-bs-toggle="tab" data-bs-target="#investment-tab-pane" type="button" role="tab" aria-selected="false">
+                        <i class="flaticon-investment"></i>
+                        <span>Investment Loan</span>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="emergency-tab" data-bs-toggle="tab" data-bs-target="#emergency-tab-pane" type="button" role="tab" aria-selected="false">
+                        <i class="flaticon-money-bag-1"></i>
+                        <span>Emergency Loan</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="tab-content" id="services-tab-content">
+        <!-- Personal Crypto Loan -->
+        <div class="tab-pane fade show active" id="personal-tab-pane" role="tabpanel">
+            <div class="container">
+                <div class="row align-items-center gutter-y-30">
+                    <div class="col-lg-5">
+                        <div class="services-two-image">
+                            <img src="{% static 'assets/images/services/crypto-personal.jpg' %}" alt="Personal Crypto Loan">
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="services-two-info">
+                            <div class="services-two-tagline"><p>7% Interest rate</p></div>
+                            <div class="services-two-details dark-text-white">
+                                <p>Access instant cash using your crypto as collateral. Our Personal Crypto Loans offer flexible repayment plans and zero liquidation risk, letting you keep your digital assets while spending in fiat.</p>
+                            </div>
+                            <ul class="services-two-features">
+                                <li>Borrow without selling your crypto</li>
+                                <li>Low interest rates with high approval speed</li>
+                                <li>No credit score required</li>
+                                <li>Flexible repayment terms</li>
+                                <li>Secure smart contract-backed platform</li>
+                            </ul>
+
+                            <ul class="services-two-features">
+                                <li> Amount: $10,000 – $1,000,000</li>
+                                <li>Tenure: 6 – 36 months</li>
+                                <li> Quick Approval</li>
+                                <li>Minimal Documentation</li>
+                                <li>🔐 Requires KYC</li>
+                            </ul>
+                            <a href="{% url 'personal_loan' %}" class="btn btn-outline-secondary">Explore Services <i class="flaticon-next"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Loan -->
+        <div class="tab-pane fade" id="business-tab-pane" role="tabpanel">
+            <div class="container">
+                <div class="row align-items-center gutter-y-30">
+                    <div class="col-lg-5">
+                        <div class="services-two-image">
+                            <img src="{% static 'assets/images/services/business-loan.jpg' %}" alt="Business Loan">
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="services-two-info">
+                            <div class="services-two-tagline"><p>9% Interest rate</p></div>
+                            <div class="services-two-details dark-text-white">
+                                <p>Fuel your business growth with tailored funding solutions. StrategyiLoan offers quick and flexible loans to support expansion, operations, or innovation—backed by expert support.</p>
+                            </div>
+                            <ul class="services-two-features">
+                                <li>Custom loan plans for SMEs and startups</li>
+                                <li>Quick disbursement with low collateral</li>
+                                <li>Crypto or fiat-backed loan options</li>
+                                <li>Competitive interest rates</li>
+                                <li>Dedicated advisor support</li>
+                            </ul>
+                            <a href="{% url 'business_loan' %}" class="btn btn-outline-secondary">Explore Services <i class="flaticon-next"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Crypto Investment Loan -->
+        <div class="tab-pane fade" id="investment-tab-pane" role="tabpanel">
+            <div class="container">
+                <div class="row align-items-center gutter-y-30">
+                    <div class="col-lg-5">
+                        <div class="services-two-image">
+                            <img src="{% static 'assets/images/services/investment-loan.jpg' %}" alt="Crypto Investment Loan">
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="services-two-info">
+                            <div class="services-two-tagline"><p>8% Interest rate</p></div>
+                            <div class="services-two-details dark-text-white">
+                                <p>Take advantage of market opportunities with our Crypto Investment Loans. Designed for active investors, this loan helps you increase your position size while keeping your original assets intact.</p>
+                            </div>
+                            <ul class="services-two-features">
+                                <li>Boost your crypto portfolio instantly</li>
+                                <li>Zero liquidation risk</li>
+                                <li>Ideal for staking, farming, or short-term trading</li>
+                                <li>Borrow up to 70% LTV</li>
+                                <li>Instant crypto disbursement</li>
+                            </ul>
+                            <a href="{% url 'investment_loan' %}" class="btn btn-outline-secondary">Explore Services <i class="flaticon-next"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Loan -->
+        <div class="tab-pane fade" id="emergency-tab-pane" role="tabpanel">
+            <div class="container">
+                <div class="row align-items-center gutter-y-30">
+                    <div class="col-lg-5">
+                        <div class="services-two-image">
+                            <img src="{% static 'assets/images/services/emergency-loan.jpg' %}" alt="Emergency Loan">
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="services-two-info">
+                            <div class="services-two-tagline"><p>14% Interest rate</p></div>
+                            <div class="services-two-details dark-text-white">
+                                <p>In urgent moments, StrategyiLoan offers quick-access Emergency Loans to help you cover medical bills, home repairs, or other unforeseen expenses with minimal approval delays.</p>
+                            </div>
+                            <ul class="services-two-features">
+                                <li>Fast approval and disbursement</li>
+                                <li>Minimal documentation needed</li>
+                                <li>Short-term or long-term options</li>
+                                <li>Apply anytime, 24/7 access</li>
+                                <li>Use for medical, travel, or personal needs</li>
+                            </ul>
+                            <a href="{% url 'emergency_loan' %}" class="btn btn-outline-secondary">Explore Services <i class="flaticon-next"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- services one end -->
+<!-- features one start -->
+<section class="features-section-one">
+    <div class="container-fluid">
+        <div class="row align-items-center justify-content-center justify-content-xl-start">
+            <!-- Left Image Block -->
+            <div class="col-xxl-3 col-xl-3 col-md-5 col-sm-7">
+                <div class="features-one-image">
+                    <img src="{% static 'assets/images/features-1.jpg' %}" alt="features-image">
+                    <div class="image-shape">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Info Block -->
+            <div class="col-xxl-5 col-xl-5 col-md-7">
+                <div class="features-one-info">
+                    <div class="heading-box always-black">
+                        <span class="heading-subtitle wow fadeInUp animated">🤝 WHO WE ARE</span>
+                        <h2 class="heading-title wow fadeInUp animated">Smart Capital for Bold Ideas</h2>
+                    </div>
+                    <p>
+                        Strategyloan is a crypto-enabled financial platform offering accessible, secure, and high-value funding for individuals, startups, and global ventures. We combine blockchain efficiency with traditional reliability to support your ambitions — without upfront collateral or hidden fees.
+                    </p>
+                    <div class="features-one-list-block">
+                        <ul class="features-one-list always-black">
+                            <li>Blockchain-secured loan processing.</li>
+                            <li>Receive funds in fiat or crypto (BTC, ETH, USDT).</li>
+                            <li>Instant access to loan calculator and application.</li>
+                            <li>2% fixed interest for qualified applicants.</li>
+                            <li>Custom repayment plans & grace periods.</li>
+                            <li>Quick approvals — typically under 10 days.</li>
+                        </ul>
+                    </div>
+                    <a href="{% url 'user:register' %}" class="btn btn-secondary">
+                        Get Started <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Loan Calculator -->
+            <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-8 col-sm-10">
+                <form action="#" id="loan-calculator" data-interest-rate="2" class="features-one-form wow fadeInUp animated" data-wow-duration="2000ms" data-wow-delay="500ms">
+                    <h3>How much do you need?</h3>
+                    <div class="features-one-form-content">
+                        <div class="input-box__top">
+                            <span>$10,000</span>
+                            <span>$500,000</span>
+                        </div>
+                        <div class="input-box">
+                            <div class="range-slider-count" id="range-slider-count"></div>
+                            <input type="hidden" value="" id="min-value-rangeslider-count">
+                            <input type="hidden" value="" id="max-value-rangeslider-count">
+                        </div>
+
+                        <div class="input-box__top">
+                            <span>1 Month</span>
+                            <span>120 Months</span>
+                        </div>
+                        <div class="input-box">
+                            <div class="range-slider-month" id="range-slider-month"></div>
+                            <input type="hidden" value="" id="min-value-rangeslider-month">
+                            <input type="hidden" value="" id="max-value-rangeslider-month">
+                        </div>
+
+                        <p>
+                            <span>Pay Monthly</span>
+                            <b>$<i id="loan-monthly-pay"></i></b>
+                        </p>
+                        <p>
+                            <span>Total Pay Back</span>
+                            <b>$<i id="loan-total"></i></b>
+                        </p>
+                        <button type="submit" class="btn btn-primary btn-block">Apply For Loan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- features one end -->
+<!-- why-choose one start -->
+<section class="why-choose-section-one">
+    <div class="why-choose-shape-one-1">
+        <img src="{% static 'assets/images/shape/why-choose-shape-1.png' %}" alt="shape">
+    </div>
+    <div class="why-choose-shape-one-2">
+        <img src="{% static 'assets/images/shape/why-choose-shape-2.png' %}" alt="shape">
+    </div>
+    <div class="container">
+        <div class="row gutter-y-30">
+            <!-- Left Content -->
+            <div class="col-xl-9 why-choose-left-one">
+                <div class="heading-box heading-white">
+                    <span class="heading-subtitle wow fadeInUp animated">🤝 WHY Strategy Loan</span>
+                    <h2 class="heading-title wow fadeInUp animated">Secure, transparent and crypto-powered lending you can count on</h2>
+                </div>
+                <div class="why-choose-one-image">
+                    <img src="{% static 'assets/images/why-choose-image-1.jpg' %}" alt="why-choose-image">
+                </div>
+                <div class="row">
+                    <!-- Box 1 -->
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+                        <div class="why-choose-one-box">
+                            <div class="why-choose-box-one-title">
+                                <i class="fas fa-user-shield"></i>
+                                <h4>Personalized Solutions</h4>
+                            </div>
+                            <p>Get custom-tailored loans aligned with your financial needs, backed by fiat or crypto assets.</p>
+                        </div>
+                    </div>
+                    <!-- Box 2 -->
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+                        <div class="why-choose-one-box">
+                            <div class="why-choose-box-one-title">
+                                <i class="fas fa-percentage"></i>
+                                <h4>Ultra-Low Rates</h4>
+                            </div>
+                            <p>Enjoy as low as 2% fixed annual interest — no hidden fees, no collateral up front.</p>
+                        </div>
+                    </div>
+                    <!-- Box 3 -->
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+                        <div class="why-choose-one-box">
+                            <div class="why-choose-box-one-title">
+                                <i class="fas fa-lock"></i>
+                                <h4>Blockchain-Secured</h4>
+                            </div>
+                            <p>We leverage blockchain tech to ensure secure, fast, and transparent transactions for every client.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Counter Stats -->
+            <div class="col-xl-3 col-lg-12">
+                <ul class="counter-box-one">
+                    <li>
+                        <h6 data-target="10" data-symbol="+">0</h6>
+                        <span>01</span>
+                        <p>Years of fintech innovation</p>
+                    </li>
+                    <li>
+                        <h6 data-target="80" data-symbol="k">0</h6>
+                        <span>02</span>
+                        <p>Crypto + fiat loans approved</p>
+                    </li>
+                    <li>
+                        <h6 data-target="15" data-symbol="k">0</h6>
+                        <span>03</span>
+                        <p>Satisfied global clients</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- process one start -->
+<section class="process-one">
+    <div class="container" >
+        <div class="row gutter-y-30">
+            <!-- Heading Section -->
+            <div class="col-lg-6">
+                <div class="heading-box">
+                    <span class="heading-subtitle wow fadeInUp animated" style="color: #fff;border: 1px solid #fff">🤝 OUR PROCESS</span>
+                    <h2 class="heading-title wow fadeInUp animated" style="color: #fff;">From Application to Crypto-Enabled Funding</h2>
+                    <p class="heading-details">
+                        Strategy Loan makes borrowing effortless. Whether you're seeking fiat or crypto-based capital, our end-to-end process ensures clarity, speed, and confidence at every stage.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Process Image -->
+            <div class="col-xl-3 ">
+                <div class="process-one-image">
+                    <img src="{% static 'assets/images/process-image.jpg' %}" alt="process-image">
+                </div>
+            </div>
+
+            <!-- Process Steps -->
+            <div class="col-xl-9 col-md-8 align-self-center">
+                <div class="process-item-one wow fadeInRight animated" data-wow-delay="500ms" data-wow-duration="2000ms">
+
+                    <!-- Step 1: Application -->
+                    <div class="process-one-box">
+                        <div class="process-one-box-icon">
+                            <i class="flaticon-application"></i>
+                        </div>
+                        <div class="process-one-box-title" style="color: #fff;">
+                            <h3>Application</h3>
+                        </div>
+                        <div class="process-one-box-devider"></div>
+                        <div class="process-one-box-details">
+                            <p>Start by completing our secure online form. Share your funding goals and preferred currency — EUR, USD, BTC, ETH, or USDT.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Documentation -->
+                    <div class="process-one-box">
+                        <div class="process-one-box-icon">
+                            <i class="flaticon-contract"></i>
+                        </div>
+                        <div class="process-one-box-title">
+                            <h3>Documentation</h3>
+                        </div>
+                        <div class="process-one-box-devider"></div>
+                        <div class="process-one-box-details">
+                            <p>After initial review, we’ll request supporting documents (e.g., ID, project brief, or business plan). No collateral required up front.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Approval -->
+                    <div class="process-one-box">
+                        <div class="process-one-box-icon">
+                            <i class="flaticon-approval"></i>
+                        </div>
+                        <div class="process-one-box-title">
+                            <h3>Approval</h3>
+                        </div>
+                        <div class="process-one-box-devider"></div>
+                        <div class="process-one-box-details">
+                            <p>Strategy Loan evaluates your request quickly. Expect an approval decision within days — not weeks — even for high-volume projects.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Funding -->
+                    <div class="process-one-box">
+                        <div class="process-one-box-icon">
+                            <i class="flaticon-money-1"></i>
+                        </div>
+                        <div class="process-one-box-title">
+                            <h3>Funding</h3>
+                        </div>
+                        <div class="process-one-box-devider"></div>
+                        <div class="process-one-box-details">
+                            <p>Once finalized, your funds are disbursed via bank transfer or crypto wallet — typically within 10 business days of contract execution.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- process one end -->
+
+
+
+    <!-- blog one end -->
+    <!-- cta one start -->
+    <section class="cta-one">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-xl-8 col-md-9 col-sm-9 col-9">
+                <div class="cta-title" style="color: #fff;">
+                    <h2>
+                        Let’s fund your future — crypto or fiat.<br>
+                        Tailored loans. Trusted process. Global reach.
+                    </h2>
+                </div>
+                <a href="{% url 'contact' %}" class="btn btn-secondary">
+                    Contact Us <i class="flaticon-next"></i>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-3 col-3">
+                <img src="{% static 'assets/images/strategy_logo_white.svg' %}" alt="Strategy Loan Logo">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="partner-one">
+    <div class="col-lg-8 mx-auto" style="text-align: center;">
+        <span class="heading-subtitle wow fadeInUp">🏦 APPROVED BY</span>
+        <h2 class="heading-title wow fadeInUp">Trusted & Backed by Leading Institutions</h2>
+        <p class="dark-text dark-text-white">StrategyiLoan partners with top-tier financial institutions to ensure secure, compliant, and reliable loan disbursements globally.</p>
+    </div>
+
+    <div class="container-fluid">
+        <div class="partner-slider-one">
+            {% for logo in approved_logos %}
+            <div class="partner-slider-one-item">
+                <div class="partner-slider-logo">
+                    <img src="{{ logo.url }}" alt="{{ logo.name }}">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+{% endblock %}
